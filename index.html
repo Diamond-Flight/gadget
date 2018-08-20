@@ -2,44 +2,44 @@
 <!-- saved from url=(0029)http://gadget.buddyspike.net/ -->
 <html lang="en">
 	<head>
-		
-		
+
+
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-		
-		
+
+
+
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
-		
-		
+
+
+
 		<!--style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
 		</style>
-		
+
 		<style type="text/css">.gm-control-active img,.gm-svpc img{box-sizing:content-box}.gm-control-active:hover img:nth-child(1),.gm-control-active:active img:nth-child(1),.gm-control-active:active img:nth-child(2){display:none}
 		</style>
-		
+
 		<link type="text/css" rel="stylesheet" href="./operation_BLUE FLAG_files/css(1)">
-		
+
 		<style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
 		</style>
-		
+
 		<style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
 		</style-->
-		
+
 		<meta name="msapplication-config" content="none">
-		
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>operation:BLUE FLAG</title>
 		<meta name="description" content="24/7 DCS Multiplayer Campaign">
-		
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="img/ico" href="http://www.foinikas.org/crash/img/bsicon.ico">
-		
+
 		<script src="static/socket.io-1.4.5.js"></script>
 
 
@@ -320,7 +320,7 @@
             )(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
             ga('create', 'UA-76502811-2', 'auto');
             ga('send', 'pageview');
-            
+
 
             BF_STATUS = {
                 "baseStatus": {
@@ -18920,7 +18920,7 @@
                 "roundTime": 0,
                 "roundVersion": "1.0"
             };
-            
+
             var map
             var markers = []
 
@@ -18948,7 +18948,7 @@
 
                 return ' <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0; background: #404040"><div class="progress-bar" style="width: ' + amount + '%;"> </div> </div> '
             }
-            
+
             function generateProgressBarColor(amount, coalition) {
 				//coalition = 0;		//test cases
 				switch (coalition) {
@@ -18966,54 +18966,54 @@
 						break;
 				}
             }
-            
-            
+
+
             // Converts from degrees to radians.
 			Math.radians = function(degrees) {
 				return degrees * Math.PI / 180;
 			};
-			 
+
 			// Converts from radians to degrees.
 			Math.degrees = function(radians) {
 				return radians * 180 / Math.PI;
 			};
-            
-            
+
+
             function projectToMap(phi, lambda) {		//latitude, longitude
 				phi = Math.radians(phi);
 				lambda = Math.radians(lambda);
-				
+
 				var x = 0;
 				var y = 0;
 				var scalex = 7200;		//scale constant -not sure why we need two of them
 				var scaley = 8250;		//scale constant
-				
+
 				var phi0 = Math.radians(45.2);		//reference latitude		-top left corner of the map
 				var lambda0 = Math.radians(37);	//reference longitude
-				
+
 				var phi1 = Math.radians(41.33333333);		//standard parallel 1		--written on the map
 				var phi2 = Math.radians(46.66666666);		//standard parallel 2
-				
+
 				var ro;
 				var ro0;
 				var n;
 				var F;
-				
+
 				n = Math.log(Math.cos(phi1)*(1/Math.cos(phi2))) / Math.log(Math.tan(Math.PI/4+phi2/2)*(1/Math.tan(Math.PI/4+phi1/2)));
 				F = (Math.cos(phi1)*Math.pow(Math.tan(Math.PI/4 + phi1/2), n)) / n;
 				ro =  F * Math.pow(1/Math.tan(Math.PI/4+phi/2), n);
 				ro0 = F * Math.pow(1/Math.tan(Math.PI/4+phi0/2), n);
-				
+
 				x = ro * Math.sin(n*(lambda - lambda0));
 				y = ro0 - ro * Math.cos(n*(lambda - lambda0));
-				
+
 				x *= scalex;
 				y *= scaley;
-				
+
 				return [x, y];
 			}
-            
-            
+
+
             function processSessionTime(time) {
 
                 $sessiontimer.text(toHHMMSS(time));
@@ -19023,16 +19023,16 @@
                 });
             }
             function processBFStatus(first) {
-				
-				
+
+
 				document.getElementById("mystatus").innerHTML = "processing";
 
                 var fireicon = '<span class="glyphicon glyphicon-fire"> </span>';
                 var closedicon = '<span class="glyphicon glyphicon-remove"> </span>';
                 var repairicon = '<span class="glyphicon glyphicon-wrench"> </span>';
                 var planeicon = '<span class="glyphicon glyphicon-plane"> </span>';
-                
-                
+
+
 				document.getElementById("mystatus").innerHTML = "after icons";
 
                 var farps = $('#jsonfarps');
@@ -19044,7 +19044,7 @@
                 comms.text('');
                 airbases.text('');
                 cities.text('');
-                
+
                 document.getElementById("mystatus").innerHTML = "after vars";
 
                 $livestimer.text(toHHMMSS(BF_STATUS.livesReset))
@@ -19054,7 +19054,7 @@
                 if (!first) {
 					processSessionTime(BF_STATUS.roundTime)
 				}
-                
+
 				document.getElementById("mystatus").innerHTML = "session time processed";
 
                 //clear old markers
@@ -19063,12 +19063,12 @@
                 }
 
                 markers = []
-                
-                
+
+
 				document.getElementById("mystatus").innerHTML = "markers cleared";
 
 				document.getElementById("map").innerHTML = "<img onClick='requestFullScreen(document.body)' src='static/img/map.png' style='width: 800px;'>";
-				
+
 				document.getElementById("mystatus").innerHTML = "my markers cleared";
 
 
@@ -19082,7 +19082,7 @@
                         //var text = val.name + " - PAK " + val.pak + "\n" + val.baseType + "\n" + convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\nHealth: " + val.health + "%"
                         var text = '';
                         text += val.name + " - PAK " + val.pak + "\n";
-                        text += val.baseType + "\n"; 
+                        text += val.baseType + "\n";
                         text += convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\n";
                         text += "Health: " + val.health + "%" + "\n";
 
@@ -19103,14 +19103,14 @@
                         text += "Fuel group alive: " + val.fuelGroupAlive + "\n";
                         text += "Has fuel group: " + val.hasFuelGroup + "\n";
                         text += "Unit count: " + val.unitCount;*/
-                        
-                        
-                        
-                        
+
+
+
+
 
                         var icon = "static/img/redcity.png"
                         var statusInfo = $("<li></li>")
-                        
+
                         //<div style="position: absolute; top: 30px; left: 60px; padding: 0; text-align: left">
 						//	<img src="static/img/redbase.png" style="display: block; margin: 0; padding: 0; float: left">
 						//	<div class="progress" style="width:30px; height:10px; display:inline-block; margin: 3px; background: #404040; float: left">
@@ -19124,27 +19124,27 @@
 						//		<span class="glyphicon glyphicon-fire"></span>
 						//	</p>
 						//</div>
-						
+
 						document.getElementById("mystatus").innerHTML = "fore project";
-						
+
 						var pos = projectToMap(val.locationDetails.lat, val.locationDetails.lon);
-						
+
 						document.getElementById("mystatus").innerHTML = "projected";
-						
+
                         var mapMarker = $("<div style='position: absolute; left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px; padding: 0; width: 39px'></div>");
                         var mapIcon = $("<img style='display: block; margin: -10px; padding: 10px; float: left'>");
-                        
+
                         mapMarker.append(mapIcon);
-                        
-                        
-                        
-                        
+
+
+
+
 
                         statusInfo.append(generateProgressBarColor(val.health, val.coalition));
 
                         statusInfo.append(val.name + ' ');
-                        
-                        
+
+
                         //val.coalition = 0;		//test cases
                         switch (val.coalition) {
 							case 1:
@@ -19157,9 +19157,9 @@
 								mapMarker.append($("<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + val.health + "%; background: #cccccc'></div></div><div style='color: #000; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + val.health + "</div>"));
 								break;
 						}
-						
+
 						mapMarkerP = $("<div style='font-size: 8px; color: #ffffff; text-align: center; width: 100%; float: left'></div>");
-						
+
 
                         var current;
                         if (val.baseType == "FARP") {
@@ -19215,9 +19215,9 @@
                         var imgmap = $('<img>');
                         imgmap.attr('src', icon);
                         mapIcon.attr('src', icon);
-                        
-                        
-                        
+
+
+
                         if (val.closed || val.coalition == 0) {
 							if (val.coalition == 0) {
 								imgmap.css({
@@ -19247,7 +19247,7 @@
 									"filter": " grayscale(40%)"
 								});
 							}
-							
+
                             statusInfo.css({
                                 color: 'gray'
                             })
@@ -19286,16 +19286,16 @@
                             statusInfo.append(planeicon);
                             mapMarkerP.append(planeicon);
                         }
-                        
-                        
-                        
+
+
+
 
                         statusInfo.tooltip({
                             title: text,
                             placement: 'auto',
                             animation: false
                         })
-                        
+
 
                         //add click to status to jump you to the right place
                         /*statusInfo.bind('click', {
@@ -19304,19 +19304,19 @@
                             map.setZoom(14);
                             map.panTo(event.data.point);
                         });*/
-                        
-                        
+
+
                         mapMarker.tooltip({
                             title: text,
                             placement: 'auto',
                             animation: false
                         })
-                        
+
                         mapMarker.append(mapMarkerP);
-                        
+
                         current.append(statusInfo);
                         $('#map').append(mapMarker);
-                        
+
 
                         /*imgmap.tooltip({
                             title: text,
@@ -19454,30 +19454,36 @@
                 }
 
             }
-            
-            
-            
+
+
+
             var loadandstuff = function (){
 
 				document.getElementById("mystatus").innerHTML = "func";
 
 
+				var loc = document.location + '';
+				if (loc.split("?")[1] == "knee") {
+					$('#kneeboard').css("display", "block");
+				}
+
+
                 //$('[data-toggle="tooltip"]').tooltip();
 
                 processBFStatus(true);
-                
+
 				document.getElementById("mystatus").innerHTML = "processed";
 
 
                 var $MASTER_LIVE_SERVER = false;
 
                 var ws = io.connect('http://gadget.buddyspike.net:80');		//io.connect('http://' + document.domain + ':' + location.port);
-                
-                
-                
+
+
+
 
                 ws.on('connect', function() {
-					
+
                     ws.emit('connect event', JSON.stringify({
                         'data': 'client connected'
                     }));
@@ -19485,19 +19491,19 @@
                     $status.removeClass("label-danger label-warning").addClass("label label-primary");
                 });
 
-                ws.on('disconnect', function() {					
+                ws.on('disconnect', function() {
                     $status.text('disconnected');
                     $status.removeClass("label-warning label-primary").addClass("label label-danger");
                 });
 
-                ws.on('error', function() {					
+                ws.on('error', function() {
                     $status.text('error');
                     $status.removeClass("label-danger label-primary").addClass("label label-warning");
                 });
 
                 ws.on('dcs server status emited', function(msg) {
 					document.getElementById("mystatus").innerHTML = "dcs server status emited";
-					
+
                     console.log('server is alive: ' + msg.data);
                     $servericon.tooltip({
                         title: '░▒▓ BUDDYSPIKE™ www.blix.com ▓▒░',
@@ -19523,7 +19529,7 @@
 
                 ws.on('time emited', function(msg) {
 					document.getElementById("mystatus").innerHTML = "time emited";
-					
+
                     console.log(msg);
                     ga('send', {
                         hitType: 'event',
@@ -19535,7 +19541,7 @@
 
                 ws.on('jsonpilots emited', function(jmsg) {
 					document.getElementById("mystatus").innerHTML = "jsonpilots emited";
-					
+
                     var arr = JSON.parse(jmsg);
                     var red_pilots = new Array();
                     var blue_pilots = new Array();
@@ -19648,7 +19654,7 @@
 
                 ws.on('bfstatus emited', function(jmsg) {
 					document.getElementById("mystatus").innerHTML = "bfstatus emited";
-					
+
 
                     BF_STATUS = jmsg
                     processBFStatus(false)
@@ -19656,7 +19662,7 @@
 
                 ws.on('bfpilots emited', function(jmsg) {
 					document.getElementById("mystatus").innerHTML = "bfpilots emited";
-					
+
 
                     $('#total-red').text(jmsg.red + " RED")
                     $('#total-blue').text(jmsg.blue + " BLUE")
@@ -19664,7 +19670,7 @@
 
                 ws.on('alert emited', function(jmsg) {
 					document.getElementById("mystatus").innerHTML = "alert emited";
-					
+
                     var obj = JSON.parse(jmsg);
                     $alerttit.html('<a href="' + obj.url + '" target="_blank">' + obj.title + '</a>').html();
                     $alertbody.text(obj.body);
@@ -19672,7 +19678,7 @@
 
                 ws.on('stats emited', function(jmsg) {
 					document.getElementById("mystatus").innerHTML = "stats emited";
-					
+
                     var arr = JSON.parse(jmsg);
                     //var textArr = new Array();
 
@@ -19700,12 +19706,12 @@
                     });
                 });
 
-                
+
 				document.getElementById("mystatus").innerHTML = "setup correctly";
 
             }
-            
-            
+
+
             $(document).ready(loadandstuff);
 
             function myFunction(pilotname) {
@@ -20043,18 +20049,18 @@
 		<span>while: </span>
 		<span style="font-size: 12px;" id="status" class="label label-primary">connecting...</span>
 	</div>
-	
+
 	<div style="width: 990px; padding: 5px; margin: 0 auto;">
-		
-		
-		
+
+
+
 		<div id="map" style="width: 800px; position: relative; margin: 0 auto">
-			
-			
+
+
 		</div>
-		
+
 		<br>
-		
+
 		<table style='margin: 0 auto;'>
 			<tr>
 				<td>
@@ -20067,7 +20073,7 @@
 							<div class="progress-bar" style="width: 72.2222%;" id="sessiontimerbar"></div>
 						</div>
 						<h6><span id="pilotsonlinecounter" style="color:grey">&nbsp;</span></h6>
-						
+
 						<hr>
 						<p>
 							<span style="color:gray">time to lives reset </span><span class="label label-default" id="livestimer">00:00:00</span>
@@ -20077,19 +20083,19 @@
 
 						<p>Registered: <span id="total-red" class="label label-danger">0 RED</span> <span id="total-blue" class="label label-primary">0 BLUE</span></p>
 
-						
+
 					</div>
 				</td>
 				 <!-- AIRBASES and Roadbases -->
 		<!------------------------------------------------------------------------------ -->
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				
+
 				<td>
 					<div style="width:250px">
 						<h5 class="text-left" style="color:white; font-weight: bold">Airfields</h5>
 						<ul class="no_bullet text-left bsspacing" id="jsonbases"><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Batumi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Beslan </li><li class="bluebase" style="color: orange;" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> </div> </div> Maykop <span class="glyphicon glyphicon-fire"> </span><span class="glyphicon glyphicon-wrench"> </span><span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Mineralnye Vody </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gele <span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kutaisi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Stennis </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Tbilisi </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Krymsk <span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kobuleti </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kuznetsov </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Sukhumi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gudauta </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Nalchik </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Sochi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Mozdok </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Senaki </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Krasnodar Center <span class="glyphicon glyphicon-plane"> </span></li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Anapa </li></ul>
 					</div>
-					
+
 				</td>
 
 
@@ -20105,7 +20111,7 @@
 					</div>
 				</td>
 
-				
+
 				<td>
 				<!-- CITIES -->
 				<!------------------------------------------------------------------------------ -->
@@ -20125,7 +20131,7 @@
 
 		<!-- INFO -->
 		<!------------------------------------------------------------------------------ -->
-		
+
 
 		<div style="margin: 0 auto">
 			<div id="myTabContent" class="tab-content">
@@ -20145,18 +20151,18 @@
 						<span class="glyphicon glyphicon-exclamation-sign"> </span> This page will auto refresh,
 						no need to mash the F5 key to get up-to-date results.<br><span class="glyphicon glyphicon-fullscreen"> </span>&nbsp;Click the map to go fullscreen.
 						<br><span class="glyphicon glyphicon-backward"></span>&nbsp;Click the kneeboard to change pages.&nbsp;<span class="glyphicon glyphicon-forward"></span></p>
-						
+
 				</div>
 			</div>
 		</div>
 		<!------------------------------------------------------------------------------ -->
-	
+
 		<br>
-	
-		<iframe src="knee.html" style="width: 100%; height: 1500px; border: #000"></iframe>
-	
-	
-	
+
+		<iframe id="kneeboard" src="knee.html" style="width: 100%; height: 1500px; border: #000; display: none;"></iframe>
+
+
+
 	</div>
 
 
@@ -20170,7 +20176,7 @@
 	  //var el = document.body;
 
 	  // Supports most browsers and their versions.
-	  var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen 
+	  var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen
 	  || el.mozRequestFullScreen || el.msRequestFullScreen;
 
 	  if (requestMethod) {
@@ -20309,4 +20315,3 @@
 </body>
 
 </html>
-
