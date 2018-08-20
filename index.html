@@ -18985,11 +18985,12 @@
 
 				var x = 0;
 				var y = 0;
-				var scalex = 7200;		//scale constant -not sure why we need two of them
-				var scaley = 8250;		//scale constant
+				var scalex = 7440;									//Number(document.getElementById("xscale").innerHTML);		//scale constant -not sure why we need two of them
+				var scaley = 7800;									//Number(document.getElementById("yscale").innerHTML);		//scale constant
+				var angle = Math.radians(-2.7);			//Math.radians(Number(document.getElementById("rot").innerHTML));
 
 				var phi0 = Math.radians(45.2);		//reference latitude		-top left corner of the map
-				var lambda0 = Math.radians(37);	//reference longitude
+				var lambda0 = Math.radians(37.05);	//reference longitude
 
 				var phi1 = Math.radians(41.33333333);		//standard parallel 1		--written on the map
 				var phi2 = Math.radians(46.66666666);		//standard parallel 2
@@ -19009,6 +19010,9 @@
 
 				x *= scalex;
 				y *= scaley;
+
+				x = x * Math.cos(angle) - y* Math.sin(angle);
+				y = x * Math.sin(angle) + y* Math.cos(angle);
 
 				return [x, y];
 			}
@@ -20044,6 +20048,18 @@
 <body style="width: 100%; min-width: 990px; text-align: center; overflow-y: scroll">
 	<div style="text-align: right; width: 100%; background: #404040; padding: 6px; color: #aaaaaa">
 		<span id="mystatus" style="display: none">none</span>
+
+		<!--TEST projection constants-->
+		<!--button onclick="document.getElementById('xscale').innerHTML = Number(document.getElementById('xscale').innerHTML) - 10; processBFStatus(false);">-10</button>
+		<span id="xscale">7300</span>
+		<button onclick="document.getElementById('xscale').innerHTML = Number(document.getElementById('xscale').innerHTML) + 10; processBFStatus(false);">+10</button>
+		<button onclick="document.getElementById('yscale').innerHTML = Number(document.getElementById('yscale').innerHTML) - 10; processBFStatus(false);">-10</button>
+		<span id="yscale">7800</span>
+		<button onclick="document.getElementById('yscale').innerHTML = Number(document.getElementById('yscale').innerHTML) + 10; processBFStatus(false);">+10</button>
+		<button onclick="document.getElementById('rot').innerHTML = Number(document.getElementById('rot').innerHTML) - 0.1; processBFStatus(false);">-0.1</button>
+		<span id="rot">-2</span>
+		<button onclick="document.getElementById('rot').innerHTML = Number(document.getElementById('rot').innerHTML) + 0.1; processBFStatus(false);">+0.1</button-->
+
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last update:&nbsp;
 		<span class="label label-default" style="font-size: 14px; width:auto;" id="updatetime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span>while: </span>
