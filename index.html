@@ -320,6 +320,7 @@
             )(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
             ga('create', 'UA-76502811-2', 'auto');
             ga('send', 'pageview');
+            
 
             BF_STATUS = {
                 "baseStatus": {
@@ -18913,10 +18914,10 @@
                         "type": ["UH-1H", "Mi-8MT", "SA342L", "SA342M"]
                     }
                 },
-                "livesReset": 16500,
+                "livesReset": 0,
                 "roundDesc": "Best round ever",
                 "roundName": "Round X",
-                "roundTime": 60,
+                "roundTime": 0,
                 "roundVersion": "1.0"
             };
             
@@ -19050,7 +19051,9 @@
 
 				document.getElementById("mystatus").innerHTML = "before session time";
 
-                processSessionTime(BF_STATUS.roundTime)
+                if (!first) {
+					processSessionTime(BF_STATUS.roundTime)
+				}
                 
 				document.getElementById("mystatus").innerHTML = "session time processed";
 
@@ -20036,9 +20039,9 @@
 	<div style="text-align: right; width: 100%; background: #404040; padding: 6px; color: #aaaaaa">
 		<span id="mystatus" style="display: none">none</span>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last update:&nbsp;
-		<span class="label label-default" style="font-size: 14px; width:auto;" id="updatetime">16:52:36 zulu 19/08/2018</span>
+		<span class="label label-default" style="font-size: 14px; width:auto;" id="updatetime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span>while: </span>
-		<span style="font-size: 12px;" id="status" class="label label-primary">blissfully connected</span>
+		<span style="font-size: 12px;" id="status" class="label label-primary">connecting...</span>
 	</div>
 	
 	<div style="width: 990px; padding: 5px; margin: 0 auto;">
@@ -20059,20 +20062,20 @@
 					<!------------------------------------------------------------------------------ -->
 					<!-- <div class="col-sm-3 sidenav"> -->
 					<div style="width:200px">
-						<h5><b><span id="sessiontimerlabel" style="color:grey">session elapsed time: </span></h5><h3><span id="sessiontimer" style="color:white">02:10:00</span></b></h3>
+						<h5><b><span id="sessiontimerlabel" style="color:grey">session elapsed time: </span></h5><h3><span id="sessiontimer" style="color:white">LOADING</span></b></h3>
 						<div class="progress progress-striped active" id="sessiontimerbar_parent">
 							<div class="progress-bar" style="width: 72.2222%;" id="sessiontimerbar"></div>
 						</div>
-						<h6><span id="pilotsonlinecounter" style="color:grey">43 pilots online <span style="color:#00aef0; font-size:1.5em">25</span> vs <span style="color:#ff2d03; font-size:1.5em">16</span></span></h6>
+						<h6><span id="pilotsonlinecounter" style="color:grey">&nbsp;</span></h6>
 						
 						<hr>
 						<p>
-							<span style="color:gray">time to lives reset </span><span class="label label-default" id="livestimer">05:47:00</span>
+							<span style="color:gray">time to lives reset </span><span class="label label-default" id="livestimer">00:00:00</span>
 						</p>
 						<p>DCS Radio IP <span class="label label-danger">54.36.126.186:5014</span></p>
 						<p>Teamspeak pass <span class="label label-primary">RayGun</span></p>
 
-						<p>Registered: <span id="total-red" class="label label-danger">228 RED</span> <span id="total-blue" class="label label-primary">397 BLUE</span></p>
+						<p>Registered: <span id="total-red" class="label label-danger">0 RED</span> <span id="total-blue" class="label label-primary">0 BLUE</span></p>
 
 						
 					</div>
@@ -20277,14 +20280,14 @@
 
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-    pilotsoverview();
-    getallpilots();
+    //document.getElementById("defaultOpen").click();
+    //pilotsoverview();
+    //getallpilots();
     <!-- addRowHandlers(); -->
     <!-- var infotable; -->
     <!-- infotable = $('#pilotInfo').DataTable(); -->
 
-    function openCity(evt, cityName) {
+    /*function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -20298,8 +20301,8 @@
         document.getElementById(cityName).style.display = "block";
         document.querySelector('main').style.display = "block";
         document.querySelector('#loading').style.display = "none";
-    };
-    $('body .dropdown-toggle').dropdown();
+    };*/
+    //$('body .dropdown-toggle').dropdown();
 
 </script>
 
