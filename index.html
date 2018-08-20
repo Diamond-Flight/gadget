@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://gadget.buddyspike.net/ -->
+<html lang="en">
+	<head>
+		
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		
+		
+		<!--style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+		</style>
+		
+		<style type="text/css">.gm-control-active img,.gm-svpc img{box-sizing:content-box}.gm-control-active:hover img:nth-child(1),.gm-control-active:active img:nth-child(1),.gm-control-active:active img:nth-child(2){display:none}
+		</style>
+		
+		<link type="text/css" rel="stylesheet" href="./operation_BLUE FLAG_files/css(1)">
+		
+		<style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+		</style>
+		
+		<style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+		</style-->
+		
+		<meta name="msapplication-config" content="none">
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>operation:BLUE FLAG</title>
+		<meta name="description" content="24/7 DCS Multiplayer Campaign">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="img/ico" href="http://www.foinikas.org/crash/img/bsicon.ico">
+		
+		<script src="static/socket.io-1.4.5.js"></script>
+
+
+
+		<style>
+			/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+			.row.content {
+				height: 950px;
+			}
+
+			.sidenav {
+				height: 100%;
+			}
+
+			/* On small screens, set height to 'auto' for the grid */
+			@media screen and (max-width: 767px) {
+				.row.content {
+					height: auto;
+				}
+
+				.sidebar {
+					height: auto;
+					padding: 15px;
+				}
+			}
+
+			@media screen and (max-width: 990px) {
+				.row.content {
+					height: auto;
+				}
+
+				.sidebar {
+					height: auto;
+					padding: 15px;
+				}
+			}
+
+			* {
+				border-radius: 0 !important;
+			}
+
+			.tooltip-inner {
+				white-space: pre;
+				max-width: none;
+				font-size: 16px;
+			}
+
+			.bsbuttons {
+				padding-top: 40px;
+			}
+
+			.well {
+				background: #000000;
+				margin-bottom: 5px;
+				padding-top: 5px;
+			}
+
+			.list-group > a.disabled {
+				color: #888888;
+				background-color: #222222;
+			}
+
+			.list-group > a.disabled:hover,
+			.list-group > a.disabled:focus {
+				color: #888888;
+				text-decoration: none;
+				background-color: #222222;
+				cursor: not-allowed;
+			}
+
+			body {
+				background-color: #000;
+			}
+
+			.bspilots {
+				margin-left: 30px;
+			}
+
+			.bsspacing {
+				line-height: 1.1;
+				color: lightgray;
+			}
+
+			ul.no_bullet {
+				list-style-type: none;
+				padding: 0;
+				margin: 20px;
+			}
+
+			li.bluedot {
+				background: url("static/img/bluedot.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			td.bluedot {
+				background: url("static/img/bluedot.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.reddot {
+				background: url("static/img/reddot.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			td.reddot {
+				background: url("static/img/reddot.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.neutraldot {
+				background: none;
+				padding-left: 20px;
+			}
+
+			li.bluebase {
+				background: url("static/img/bluebase.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.redbase {
+				background: url("static/img/redbase.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.bluefarp {
+				background: url("static/img/bluefarp.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.redfarp {
+				background: url("static/img/redfarp.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.bluecity {
+				background: url("static/img/bluecity.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.redcity {
+				background: url("static/img/redcity.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.blueradar {
+				background: url("static/img/blueradar.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.redradar {
+				background: url("static/img/redradar.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.bluefuel {
+				background: url("static/img/bluefuel.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			li.redfuel {
+				background: url("static/img/redfuel.png") no-repeat left;
+				padding-left: 20px;
+			}
+
+			#bsfather {
+				position: relative;
+			}
+
+			#bschild {
+				position: absolute;
+				top: 0;
+			}
+
+			::-webkit-scrollbar {
+				width: 10px; /* for vertical scrollbars */
+				height: 10px; /* for horizontal scrollbars */
+			}
+
+			::-webkit-scrollbar-track {
+				background: rgba(20, 20, 20, 0.5);
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: rgba(100, 100, 100, 0.4);
+			}
+
+			/* Style the tab */
+			div.tab {
+				overflow: hidden;
+				border: 1px solid #ccc;
+				background-color: #f1f1f1;
+			}
+
+			/* Style the buttons inside the tab */
+			div.tab button {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 14px 16px;
+				transition: 0.3s;
+				font-size: 17px;
+			}
+
+			/* Change background color of buttons on hover */
+			div.tab button:hover {
+				background-color: #ddd;
+			}
+
+			/* Create an active/current tablink class */
+			div.tab button.active {
+				background-color: #ccc;
+			}
+
+			/* Style donations */
+
+			div.patreon {
+				position: fixed;
+				right: 0px;
+				top: 60px;
+			}
+
+			/* Style the tab content */
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+			<!-- border: 1 px solid #ccc;
+			--> border-top: none;
+			}
+
+			<!--
+			TABS FADE IN CONTENT
+
+			-->
+			.tabcontent {
+				-webkit-animation: fadeEffect 1s;
+				animation: fadeEffect 1s; /* Fading effect takes 1 second */
+			}
+
+			@-webkit-keyframes fadeEffect {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes fadeEffect {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+		</style>
+
+
+    <script type="text/javascript" charset="utf-8">
+            $SCRIPT_ROOT = "";
+
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }
+                ,
+                i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            }
+            )(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-76502811-2', 'auto');
+            ga('send', 'pageview');
+
+            BF_STATUS = {
+                "baseStatus": {
+                    "LOADING": {
+                        "baseType": "FARP",
+                        "capturable": false,
+                        "centroid": {
+                            "x": -239010.078125,
+                            "y": 88.392250061035,
+                            "z": 731177.125
+                        },
+                        "clientSlotsByUnitId": {
+                            "1631": {
+                                "category": "plane",
+                                "coalition": "blue",
+                                "groupId": 575,
+                                "groupName": "Abrolaurii AV-8B #002",
+                                "point": {
+                                    "x": -238981.56500001,
+                                    "y": 731084.76971429
+                                },
+                                "type": "AV8BNA",
+                                "unitId": 1631,
+                                "unitName": "Pilot #166"
+                            },
+                            "2348": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1086,
+                                "groupName": "Ambrolauri #263",
+                                "point": {
+                                    "x": -239388.28571428,
+                                    "y": 731836.85714286
+                                },
+                                "type": "SA342M",
+                                "unitId": 2348,
+                                "unitName": "Psebay Blue SA342M No11 #074"
+                            },
+                            "2349": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1087,
+                                "groupName": "Ambrolauri #264",
+                                "point": {
+                                    "x": -239438.38942858,
+                                    "y": 731846.476
+                                },
+                                "type": "UH-1H",
+                                "unitId": 2349,
+                                "unitName": "Psebay Red UH-1H No11 #043"
+                            },
+                            "2350": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1088,
+                                "groupName": "Ambrolauri #265",
+                                "point": {
+                                    "x": -239468.57142857,
+                                    "y": 732213.42857143
+                                },
+                                "type": "Ka-50",
+                                "unitId": 2350,
+                                "unitName": "Pilot #332"
+                            },
+                            "2351": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1089,
+                                "groupName": "Ambrolauri #266",
+                                "point": {
+                                    "x": -239388.35257143,
+                                    "y": 731894.60828572
+                                },
+                                "type": "UH-1H",
+                                "unitId": 2351,
+                                "unitName": "Psebay Red UH-1H No11 #044"
+                            },
+                            "2352": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1090,
+                                "groupName": "Ambrolauri #267",
+                                "point": {
+                                    "x": -239466.85714286,
+                                    "y": 731932.85714286
+                                },
+                                "type": "Ka-50",
+                                "unitId": 2352,
+                                "unitName": "Pilot #333"
+                            },
+                            "2353": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1091,
+                                "groupName": "Ambrolauri #268",
+                                "point": {
+                                    "x": -239546.85714286,
+                                    "y": 732001.42857143
+                                },
+                                "type": "Ka-50",
+                                "unitId": 2353,
+                                "unitName": "Pilot #334"
+                            },
+                            "2355": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1093,
+                                "groupName": "Ambrolauri #270",
+                                "point": {
+                                    "x": -239520.57142857,
+                                    "y": 732100.28571429
+                                },
+                                "type": "Mi-8MT",
+                                "unitId": 2355,
+                                "unitName": "Pilot #336"
+                            },
+                            "2356": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1094,
+                                "groupName": "Ambrolauri #271",
+                                "point": {
+                                    "x": -239376.60885715,
+                                    "y": 731946.28114286
+                                },
+                                "type": "SA342Mistral",
+                                "unitId": 2356,
+                                "unitName": "Psebay Blue SA342L No11 #036"
+                            },
+                            "2357": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1095,
+                                "groupName": "Ambrolauri #272",
+                                "point": {
+                                    "x": -239476.57142857,
+                                    "y": 732028.28571429
+                                },
+                                "type": "Ka-50",
+                                "unitId": 2357,
+                                "unitName": "Pilot #337"
+                            },
+                            "2358": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1096,
+                                "groupName": "Ambrolauri #273",
+                                "point": {
+                                    "x": -239318.28571428,
+                                    "y": 731849.71428571
+                                },
+                                "type": "SA342M",
+                                "unitId": 2358,
+                                "unitName": "Psebay Blue SA342M No11 #075"
+                            },
+                            "2359": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1097,
+                                "groupName": "Ambrolauri #274",
+                                "point": {
+                                    "x": -239339.23657143,
+                                    "y": 731988.34085715
+                                },
+                                "type": "SA342L",
+                                "unitId": 2359,
+                                "unitName": "Psebay Blue SA342L No11 #037"
+                            },
+                            "2360": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 1098,
+                                "groupName": "Ambrolauri #275",
+                                "point": {
+                                    "x": -239448.57142857,
+                                    "y": 732128.85714286
+                                },
+                                "type": "Mi-8MT",
+                                "unitId": 2360,
+                                "unitName": "Pilot #338"
+                            },
+                            "2362": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 1100,
+                                "groupName": "Ambrolauri #277",
+                                "point": {
+                                    "x": -239338.28571428,
+                                    "y": 731931.14285714
+                                },
+                                "type": "SA342Mistral",
+                                "unitId": 2362,
+                                "unitName": "Psebay Blue SA342M No11 #076"
+                            },
+                            "3771": {
+                                "category": "helicopter",
+                                "coalition": "blue",
+                                "groupId": 2201,
+                                "groupName": "Ambrolauri #002",
+                                "point": {
+                                    "x": -239378.89771429,
+                                    "y": 731989.86628572
+                                },
+                                "type": "SA342L",
+                                "unitId": 3771,
+                                "unitName": "Psebay Blue SA342L No11 #065"
+                            },
+                            "3805": {
+                                "category": "plane",
+                                "coalition": "red",
+                                "groupId": 2235,
+                                "groupName": "Ambrolaori AJS37",
+                                "point": {
+                                    "x": -239017.74400001,
+                                    "y": 731247.31485714
+                                },
+                                "type": "AJS37",
+                                "unitId": 3805,
+                                "unitName": "Pilot #158"
+                            },
+                            "3806": {
+                                "category": "plane",
+                                "coalition": "red",
+                                "groupId": 2236,
+                                "groupName": "Ambrolaori AJS37 #001",
+                                "point": {
+                                    "x": -239007.45828572,
+                                    "y": 731203.02914286
+                                },
+                                "type": "AJS37",
+                                "unitId": 3806,
+                                "unitName": "Pilot #159"
+                            },
+                            "3807": {
+                                "category": "plane",
+                                "coalition": "red",
+                                "groupId": 2237,
+                                "groupName": "Ambrolaori AJS37 #002",
+                                "point": {
+                                    "x": -239013.03857144,
+                                    "y": 731224.89257143
+                                },
+                                "type": "AJS37",
+                                "unitId": 3807,
+                                "unitName": "Pilot #160"
+                            },
+                            "3808": {
+                                "category": "plane",
+                                "coalition": "red",
+                                "groupId": 2238,
+                                "groupName": "Ambrolaori AJS37 #003",
+                                "point": {
+                                    "x": -239024.26429465,
+                                    "y": 731278.05028572
+                                },
+                                "type": "AJS37",
+                                "unitId": 3808,
+                                "unitName": "Pilot #161"
+                            },
+                            "5228": {
+                                "category": "plane",
+                                "coalition": "blue",
+                                "groupId": 3642,
+                                "groupName": "Abrolaurii AV-8B #001",
+                                "point": {
+                                    "x": -238986.99357143,
+                                    "y": 731111.91257143
+                                },
+                                "type": "AV8BNA",
+                                "unitId": 5228,
+                                "unitName": "Pilot #163"
+                            },
+                            "5229": {
+                                "category": "plane",
+                                "coalition": "blue",
+                                "groupId": 3643,
+                                "groupName": "Abrolaurii AV-8B #003",
+                                "point": {
+                                    "x": -238991.85071429,
+                                    "y": 731132.484
+                                },
+                                "type": "AV8BNA",
+                                "unitId": 5229,
+                                "unitName": "Pilot #164"
+                            },
+                            "5230": {
+                                "category": "plane",
+                                "coalition": "blue",
+                                "groupId": 3644,
+                                "groupName": "Abrolaurii AV-8B #004",
+                                "point": {
+                                    "x": -238998.13642858,
+                                    "y": 731156.19828571
+                                },
+                                "type": "AV8BNA",
+                                "unitId": 5230,
+                                "unitName": "Pilot #165"
+                            },
+                            "6541": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 4351,
+                                "groupName": "Ambrolauri #001",
+                                "point": {
+                                    "x": -239366.97485714,
+                                    "y": 732141.13285714
+                                },
+                                "type": "Mi-8MT",
+                                "unitId": 6541,
+                                "unitName": "Pilot #785"
+                            },
+                            "6542": {
+                                "category": "helicopter",
+                                "coalition": "red",
+                                "groupId": 4352,
+                                "groupName": "Ambrolauri #003",
+                                "point": {
+                                    "x": -239366.29371429,
+                                    "y": 732071.31571429
+                                },
+                                "type": "Mi-8MT",
+                                "unitId": 6542,
+                                "unitName": "Pilot #786"
+                            }
+                        },
+                        "closed": false,
+                        "coalition": 0,
+                        "deadCount": 0,
+                        "deadUnits": [],
+                        "defendersSpawned": false,
+                        "disabled": false,
+                        "ewrDetected": false,
+                        "fuel": 0,
+                        "fuelGroupAlive": false,
+                        "hasFuelGroup": false,
+                        "health": 50,
+                        "location": [{
+                            "point": {
+                                "x": -239010.078125,
+                                "y": 505.00860595703,
+                                "z": 731177.125
+                            },
+                            "radius": 1524
+                        }],
+                        "locationDetails": {
+                            "altitude": 88.392250061035,
+                            "lat": 42.535901035417,
+                            "lon": 43.111341987483,
+                            "mgrs": "38T LN 449 110"
+                        },
+                        "name": "LOADING",
+                        "pak": 0,
+                        "repairing": false,
+                        "underAttack": false,
+                        "unitCount": 23
+                    },
+                    
+                },
+                "droppedGroups": [],
+                "frequencyConfig": {
+                    "blue": {
+                        "ATC": "251 MHz AM",
+                        "GCI-East": "254 MHz AM",
+                        "GCI-West": "264 MHz AM",
+                        "Transport / Helicopters": "30 MHz FM"
+                    },
+                    "red": {
+                        "ATC": "124 MHz AM",
+                        "GCI-East": "121 MHz AM",
+                        "GCI-West": "126 MHz AM",
+                        "Transport / Helicopters": "30 MHz FM"
+                    }
+                },
+                "livesConfig": {
+                    "ground-attack": {
+                        "lives": 4,
+                        "type": ["A-10C", "A-10A", "Su-25", "Su-25T", "AJS37", "Ka-50", "AV8BNA"]
+                    },
+                    "intercept": {
+                        "lives": 4,
+                        "type": ["F-5E-3", "MiG-21Bis", "SA342Mistral"]
+                    },
+                    "recon": {
+                        "lives": 6,
+                        "type": ["L-39C", "L-39ZA", "Hawk", "TF-51D", "Yak-52"]
+                    },
+                    "standard": 3,
+                    "transport": {
+                        "lives": 6,
+                        "type": ["UH-1H", "Mi-8MT", "SA342L", "SA342M"]
+                    }
+                },
+                "livesReset": 19020,
+                "roundDesc": "Best round ever",
+                "roundName": "Round X",
+                "roundTime": 9600,
+                "roundVersion": "1.0"
+            };
+
+            var map
+            var markers = []
+
+            /**
+         * Converts decimal degrees to degrees minutes seconds.
+         *
+         * @param dd the decimal degrees value.
+         * @param isLng specifies whether the decimal degrees value is a longitude.
+         * @return degrees minutes seconds string in the format 49°15'51.35"N
+         */
+            function convertToDms(dd, isLng) {
+                var dir = dd < 0 ? isLng ? 'W' : 'S' : isLng ? 'E' : 'N';
+
+                var absDd = Math.abs(dd);
+                var deg = absDd | 0;
+                var frac = absDd - deg;
+                var min = (frac * 60) | 0;
+                var sec = frac * 3600 - min * 60;
+                // Round it to 2 decimal points.
+                sec = Math.round(sec * 100) / 100;
+                return deg + "°" + min + "'" + sec + '"' + dir;
+            }
+
+            function generateProgressBar(amount) {
+
+                return ' <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0; background: #404040"><div class="progress-bar" style="width: ' + amount + '%;"> </div> </div> '
+            }
+            
+            function generateProgressBarColor(amount, coalition) {
+				//coalition = 0;		//test cases
+				switch (coalition) {
+					/*case 0:
+						return ' <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0; background: #404040"><div class="progress-bar" style="width: ' + amount + '%; background: #"> </div> </div> '
+						break;*/
+					case 1:
+						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #ff2e00'> </div> <div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div> </div> "
+						break;
+					case 2:
+						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #00b8ff'> </div> <div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div></div> "
+						break;
+					default:
+						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #cccccc'> </div> <div style='color: #000; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div></div> "
+						break;
+				}
+            }
+            
+            
+            // Converts from degrees to radians.
+			Math.radians = function(degrees) {
+				return degrees * Math.PI / 180;
+			};
+			 
+			// Converts from radians to degrees.
+			Math.degrees = function(radians) {
+				return radians * 180 / Math.PI;
+			};
+            
+            
+            function projectToMap(phi, lambda) {		//latitude, longitude
+				phi = Math.radians(phi);
+				lambda = Math.radians(lambda);
+				
+				var x = 0;
+				var y = 0;
+				var scalex = 7200;		//scale constant -not sure why we need two of them
+				var scaley = 8250;		//scale constant
+				
+				var phi0 = Math.radians(45.2);		//reference latitude		-top left corner of the map
+				var lambda0 = Math.radians(37);	//reference longitude
+				
+				var phi1 = Math.radians(41.33333333);		//standard parallel 1		--written on the map
+				var phi2 = Math.radians(46.66666666);		//standard parallel 2
+				
+				var ro;
+				var ro0;
+				var n;
+				var F;
+				
+				n = Math.log(Math.cos(phi1)*(1/Math.cos(phi2))) / Math.log(Math.tan(Math.PI/4+phi2/2)*(1/Math.tan(Math.PI/4+phi1/2)));
+				F = (Math.cos(phi1)*Math.pow(Math.tan(Math.PI/4 + phi1/2), n)) / n;
+				ro =  F * Math.pow(1/Math.tan(Math.PI/4+phi/2), n);
+				ro0 = F * Math.pow(1/Math.tan(Math.PI/4+phi0/2), n);
+				
+				x = ro * Math.sin(n*(lambda - lambda0));
+				y = ro0 - ro * Math.cos(n*(lambda - lambda0));
+				
+				x *= scalex;
+				y *= scaley;
+				
+				return [x, y];
+			}
+            
+            
+            function processSessionTime(time) {
+
+                $sessiontimer.text(toHHMMSS(time));
+                var percent = time / (180 * 60) * 100
+                $sessiontimerbar.css({
+                    width: percent + '%'
+                });
+            }
+            function processBFStatus(first) {
+				
+				
+				document.getElementById("mystatus").innerHTML = "processing";
+
+                var fireicon = '<span class="glyphicon glyphicon-fire"> </span>';
+                var closedicon = '<span class="glyphicon glyphicon-remove"> </span>';
+                var repairicon = '<span class="glyphicon glyphicon-wrench"> </span>';
+                var planeicon = '<span class="glyphicon glyphicon-plane"> </span>';
+                
+                
+				document.getElementById("mystatus").innerHTML = "after icons";
+
+                var farps = $('#jsonfarps');
+                var comms = $('#jsoncomms');
+                var airbases = $('#jsonbases');
+                var cities = $('#jsoncities');
+
+                farps.text('');
+                comms.text('');
+                airbases.text('');
+                cities.text('');
+                
+                document.getElementById("mystatus").innerHTML = "after vars";
+
+                $livestimer.text(toHHMMSS(BF_STATUS.livesReset))
+
+				document.getElementById("mystatus").innerHTML = "before session time";
+
+                processSessionTime(BF_STATUS.roundTime)
+                
+				document.getElementById("mystatus").innerHTML = "session time processed";
+
+                //clear old markers
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null)
+                }
+
+                markers = []
+                
+                
+				document.getElementById("mystatus").innerHTML = "markers cleared";
+
+				document.getElementById("map").innerHTML = "<img onClick='requestFullScreen(document.body)' src='static/img/map.png' style='width: 800px;'>";
+				
+				document.getElementById("mystatus").innerHTML = "my markers cleared";
+
+
+                for (var key in BF_STATUS.baseStatus) {
+                    if (BF_STATUS.baseStatus.hasOwnProperty(key)) {
+                        var val = BF_STATUS.baseStatus[key];
+
+                        //var point = new google.maps.LatLng(val.locationDetails.lat,val.locationDetails.lon)
+
+
+                        //var text = val.name + " - PAK " + val.pak + "\n" + val.baseType + "\n" + convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\nHealth: " + val.health + "%"
+                        var text = '';
+                        text += val.name + " - PAK " + val.pak + "\n";
+                        text += val.baseType + "\n"; 
+                        text += convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\n";
+                        text += "Health: " + val.health + "%" + "\n";
+
+                        /*text += "\nCapturable: " + val.capturable + "\n";
+                        text += "Closed: " + val.closed + "\n";
+                        text += "Coalition: " + val.coalition + "\n";
+                        text += "Dead count: " + val.deadCount + "\n";
+                        if (val.deadCount > 0) {
+							text += "---Dead units:---\n";
+							Object.keys(val.deadUnits).forEach(function (unitName) {
+								text += val.deadUnits[unitName].type + "\n";
+							});
+							text += "---------------------\n";
+						}
+                        text += "Defenders spawned: " + val.defendersSpawned + "\n";
+                        text += "Disabled: " + val.disabled + "\n";
+                        text += "Fuel: " + val.fuel + "kg" + "\n";
+                        text += "Fuel group alive: " + val.fuelGroupAlive + "\n";
+                        text += "Has fuel group: " + val.hasFuelGroup + "\n";
+                        text += "Unit count: " + val.unitCount;*/
+                        
+                        
+                        
+                        
+
+                        var icon = "static/img/redcity.png"
+                        var statusInfo = $("<li></li>")
+                        
+                        //<div style="position: absolute; top: 30px; left: 60px; padding: 0; text-align: left">
+						//	<img src="static/img/redbase.png" style="display: block; margin: 0; padding: 0; float: left">
+						//	<div class="progress" style="width:30px; height:10px; display:inline-block; margin: 3px; background: #404040; float: left">
+						//		<div class="progress-bar" style="width: 100%; background: #00b8ff">
+						//		</div>
+						//	</div>
+						//	<p style="font-size: 10px">
+						//		<span class="glyphicon glyphicon-fire"></span>
+						//		<span class="glyphicon glyphicon-fire"></span>
+						//		<span class="glyphicon glyphicon-fire"></span>
+						//		<span class="glyphicon glyphicon-fire"></span>
+						//	</p>
+						//</div>
+						
+						document.getElementById("mystatus").innerHTML = "fore project";
+						
+						var pos = projectToMap(val.locationDetails.lat, val.locationDetails.lon);
+						
+						document.getElementById("mystatus").innerHTML = "projected";
+						
+                        var mapMarker = $("<div style='position: absolute; left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px; padding: 0; width: 39px'></div>");
+                        var mapIcon = $("<img style='display: block; margin: -10px; padding: 10px; float: left'>");
+                        
+                        mapMarker.append(mapIcon);
+                        
+                        
+                        
+                        
+
+                        statusInfo.append(generateProgressBarColor(val.health, val.coalition));
+
+                        statusInfo.append(val.name + ' ');
+                        
+                        
+                        //val.coalition = 0;		//test cases
+                        switch (val.coalition) {
+							case 1:
+								mapMarker.append($("<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + val.health + "%; background: #ff2e00'></div></div><div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + val.health + "</div>"));
+								break;
+							case 2:
+								mapMarker.append($("<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + val.health + "%; background: #00b8ff'></div></div><div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + val.health + "</div>"));
+								break;
+							default:
+								mapMarker.append($("<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + val.health + "%; background: #cccccc'></div></div><div style='color: #000; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + val.health + "</div>"));
+								break;
+						}
+						
+						mapMarkerP = $("<div style='font-size: 8px; color: #ffffff; text-align: center; width: 100%; float: left'></div>");
+						
+
+                        var current;
+                        if (val.baseType == "FARP") {
+                            if (val.coalition == 1) {
+                                icon = "static/img/redfarp.png"
+                                //statusInfo.addClass("redfarp")
+                            } else {
+                                icon = "static/img/bluefarp.png"
+                                //statusInfo.addClass("bluefarp")
+                            }
+                            current = farps;
+
+                        } else if (val.baseType == "AIRBASE") {
+                            if (val.coalition == 1) {
+                                icon = "static/img/redbase.png"
+                                //statusInfo.addClass("redbase")
+                            } else {
+                                icon = "static/img/bluebase.png"
+                                //statusInfo.addClass("bluebase")
+                            }
+                            current = airbases;
+                        } else if (val.baseType == "ROADBASE" || val.baseType == "ROAD BASE") {
+                            if (val.coalition == 1) {
+                                icon = "static/img/redbase.png"
+                                //statusInfo.addClass("redbase")
+                            } else {
+                                icon = "static/img/bluebase.png"
+                                //statusInfo.addClass("bluebase")
+                            }
+                            current = farps;
+
+                        } else if (val.baseType == "COMMS ARRAY" || val.baseType == "COMMSARRAY" || val.baseType == "SAMBASE" || val.baseType == "SAM BASE" || val.baseType == "SAMSITE") {
+                            if (val.coalition == 1) {
+                                icon = "static/img/redradar.png"
+                                //statusInfo.addClass("redradar")
+                            } else {
+                                icon = "static/img/blueradar.png"
+                                //statusInfo.addClass("blueradar")
+                            }
+                            current = comms;
+                        }
+                        else {
+                            if (val.coalition == 1) {
+                                icon = "static/img/redcity.png"
+                                //statusInfo.addClass("redcity")
+                            } else {
+                                icon = "static/img/bluecity.png"
+                                //statusInfo.addClass("bluecity")
+                            }
+                            current = cities;
+                        }
+
+                        var imgmap = $('<img>');
+                        imgmap.attr('src', icon);
+                        mapIcon.attr('src', icon);
+                        
+                        
+                        
+                        if (val.closed || val.coalition == 0) {
+							if (val.coalition == 0) {
+								imgmap.css({
+									"-webkit-filter": " grayscale(100%)"
+								});
+								imgmap.css({
+									"filter": " grayscale(100%)"
+								});
+								mapIcon.css({
+									"-webkit-filter": " grayscale(100%)"
+								});
+								mapIcon.css({
+									"filter": " grayscale(100%)"
+								});
+							}
+							else {
+								imgmap.css({
+									"-webkit-filter": " grayscale(40%)"
+								});
+								imgmap.css({
+									"filter": " grayscale(40%)"
+								});
+								mapIcon.css({
+									"-webkit-filter": " grayscale(40%)"
+								});
+								mapIcon.css({
+									"filter": " grayscale(40%)"
+								});
+							}
+							
+                            statusInfo.css({
+                                color: 'gray'
+                            })
+                            if (val.closed) {
+								statusInfo.append(closedicon)
+							}
+						}
+
+
+
+                        statusInfo.prepend(imgmap);
+
+
+                        if (val.underAttack) {
+                            //mapIcon.attr('src', "static/img/circle.png");
+                            mapIcon.css("background-repeat", "no-repeat")
+                            mapIcon.css("background-position", "center")
+                            mapIcon.css("background-image", "url('static/img/circle.png')")
+
+                            statusInfo.css({
+                                color: 'orange'
+                            });
+                            mapMarkerP.css({
+                                color: 'orange'
+                            });
+                            statusInfo.append(fireicon);
+                            mapMarkerP.append(fireicon);
+                        }
+
+                        if (val.repairing) {
+                            statusInfo.append(repairicon);
+                            mapMarkerP.append(repairicon);
+                        }
+
+                        if (val.ewrDetected) {
+                            statusInfo.append(planeicon);
+                            mapMarkerP.append(planeicon);
+                        }
+                        
+                        
+                        
+
+                        statusInfo.tooltip({
+                            title: text,
+                            placement: 'auto',
+                            animation: false
+                        })
+                        
+
+                        //add click to status to jump you to the right place
+                        /*statusInfo.bind('click', {
+                            point: point
+                        }, function(event) {
+                            map.setZoom(14);
+                            map.panTo(event.data.point);
+                        });*/
+                        
+                        
+                        mapMarker.tooltip({
+                            title: text,
+                            placement: 'auto',
+                            animation: false
+                        })
+                        
+                        mapMarker.append(mapMarkerP);
+                        
+                        current.append(statusInfo);
+                        $('#map').append(mapMarker);
+                        
+
+                        /*imgmap.tooltip({
+                            title: text,
+                            placement: 'left',
+                            animation: false
+                        });*/
+                        /*var marker = new RichMarker({
+                            map: map,
+                            position: point,
+                            draggable: false,
+                            flat: true,
+                            anchor: RichMarkerPosition.MIDDLE,
+                            content: imgmap.get(0),
+                        });*/
+
+                        //var content = createInfoWindow(val)
+
+                        /*if (content != "") {
+                            //marker.infoContent = val.name + content;
+                            var infoWindow = new google.maps.InfoWindow();
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infoWindow.setContent(this.infoContent);
+                                infoWindow.open(this.getMap(), this);
+                            });
+                        }*/
+
+                        //markers.push(marker)
+                        //console.log(key);          // the name of the current key.
+                        //console.log(val);          // the value of the current key
+                    }
+                }
+
+
+				document.getElementById("mystatus").innerHTML = "if first";
+
+                /*if (first) {
+                    var bounds = new google.maps.LatLngBounds();
+                    for (var i = 0; i < markers.length; i++) {
+                        bounds.extend(markers[i].getPosition());
+                    }
+
+                    //center the map to the geometric center of all markers
+                    map.setCenter(bounds.getCenter());
+
+                    map.fitBounds(bounds);
+
+                    //remove one zoom level to ensure no marker is on the edge.
+                    map.setZoom(map.getZoom() - 1);
+                }*/
+
+                processLivesConfig()
+            }
+
+            function createInfoWindow(baseInfo) {
+
+                var blue = new Map();
+                var red = new Map();
+                var content = "<br /><br />"
+
+                if (baseInfo.clientSlotsByUnitId != undefined && baseInfo.clientSlotsByUnitId != null) {
+                    for (var key in baseInfo.clientSlotsByUnitId) {
+                        if (baseInfo.clientSlotsByUnitId.hasOwnProperty(key)) {
+                            var slot = baseInfo.clientSlotsByUnitId[key]
+
+                            var unitMap
+                            if (slot.coalition === "red") {
+                                unitMap = red
+                            } else {
+                                unitMap = blue
+                            }
+
+                            if (unitMap.has(slot.type)) {
+                                unitMap.set(slot.type, unitMap.get(slot.type) + 1)
+                            } else {
+                                unitMap.set(slot.type, 1)
+                            }
+                        }
+                    }
+                }
+
+                if (red.size > 0) {
+                    content += "Red:<br />"
+
+                    content += "<ul>"
+
+                    red.forEach(function(value, key) {
+                        content += ("<li>" + key + ": " + value + "</li>")
+                    });
+
+                    content += "</ul>"
+
+                }
+
+                if (blue.size > 0) {
+                    content += "Blue:<br />"
+                    content += "<ul>"
+
+                    blue.forEach(function(value, key) {
+                        content += ("<li>" + key + ": " + value + "</li>")
+                    });
+
+                    content += "</ul>"
+                }
+
+                if (red.size > 0 || blue.size > 0) {
+                    return content
+                }
+                return ""
+            }
+
+            function processLivesConfig() {
+                var config = BF_STATUS.livesConfig
+
+                $('#lives-config').text('')
+
+                $('#lives-config').append("<p>STANDARD: " + config.standard + "</p>")
+
+                for (var key in config) {
+                    if (config.hasOwnProperty(key)) {
+
+                        if (key != 'standard') {
+
+                            var lives = config[key]
+
+                            var str = "<p>" + key.toUpperCase() + " -  " + lives.lives + ": "
+
+                            for (var i = 0; i < lives.type.length; ++i) {
+                                str = str + lives.type[i] + " ";
+                            }
+                            str = str + "</p>"
+                            $('#lives-config').append(str)
+
+                        }
+                    }
+                }
+
+            }
+            
+            
+            
+            var loadandstuff = function (){
+
+				document.getElementById("mystatus").innerHTML = "func";
+
+
+                //$('[data-toggle="tooltip"]').tooltip();
+
+                processBFStatus(true);
+                
+				document.getElementById("mystatus").innerHTML = "processed";
+
+
+                var $MASTER_LIVE_SERVER = false;
+
+                var ws = io.connect('http://gadget.buddyspike.net:80');		//io.connect('http://' + document.domain + ':' + location.port);
+                
+                
+                
+
+                ws.on('connect', function() {
+					
+                    ws.emit('connect event', JSON.stringify({
+                        'data': 'client connected'
+                    }));
+                    $status.text('connected');
+                    $status.removeClass("label-danger label-warning").addClass("label label-primary");
+                });
+
+                ws.on('disconnect', function() {					
+                    $status.text('disconnected');
+                    $status.removeClass("label-warning label-primary").addClass("label label-danger");
+                });
+
+                ws.on('error', function() {					
+                    $status.text('error');
+                    $status.removeClass("label-danger label-primary").addClass("label label-warning");
+                });
+
+                ws.on('dcs server status emited', function(msg) {
+					document.getElementById("mystatus").innerHTML = "dcs server status emited";
+					
+                    console.log('server is alive: ' + msg.data);
+                    $servericon.tooltip({
+                        title: '░▒▓ BUDDYSPIKE™ www.blix.com ▓▒░',
+                        placement: 'left',
+                        animation: false
+                    });
+                    $MASTER_LIVE_SERVER = msg.data;
+                    if (msg.data) {
+                        $servericon.attr('src', '/static/img/logo-blix.png');
+                        $jsonpilots.fadeIn("slow");
+                        $sessiontimerlabel.fadeIn("slow");
+                        $sessiontimer.fadeIn("slow");
+                        $sessiontimerbar_parent.fadeIn("slow");
+                    } else {
+                        $servericon.attr('src', '/static/img/logo-blix-grey.png');
+                        $jsonpilots.fadeOut("slow");
+                        $sessiontimerlabel.fadeOut("slow");
+                        $sessiontimer.fadeOut("slow");
+                        $sessiontimerbar_parent.fadeOut("slow");
+                        $pilotsonlinecounter.text('server offline');
+                    }
+                });
+
+                ws.on('time emited', function(msg) {
+					document.getElementById("mystatus").innerHTML = "time emited";
+					
+                    console.log(msg);
+                    ga('send', {
+                        hitType: 'event',
+                        eventCategory: 'xhrpush',
+                        eventAction: 'refresh',
+                    });
+                    $updatetime.text(msg.data);
+                });
+
+                ws.on('jsonpilots emited', function(jmsg) {
+					document.getElementById("mystatus").innerHTML = "jsonpilots emited";
+					
+                    var arr = JSON.parse(jmsg);
+                    var red_pilots = new Array();
+                    var blue_pilots = new Array();
+                    var gray_pilots = new Array();
+                    var radioicon = '<span style="color:orange" class="glyphicon glyphicon-headphones"> </span>';
+                    var eyeicon = '<span style="color:orange" class="glyphicon glyphicon glyphicon-eye-open"> </span>';
+
+                    $.each(arr, function(i, obj) {
+                        if (obj.side == 1) {
+                            red_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
+                        } else if (obj.side == 2) {
+                            blue_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
+                        } else if (obj.side === 0) {
+                            gray_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
+                        }
+                    });
+
+                    $jsonpilots.text('');
+                    $.each(red_pilots.sort(), function(i, item) {
+                        var txt1 = $("<li></li>").text(item[0] + ' ');
+                        if (item[1] == 1) {
+                            txt1.addClass("reddot");
+                            txt1.append(radioicon);
+                        } else {
+                            txt1.addClass("reddot")
+                        }
+                        ;if (item[4] == '\nIn: CA') {
+                            txt1.append('&nbsp;');
+                            txt1.append(eyeicon);
+                        }
+                        ;var tooltext = item[0] + '\nPing: ' + item[2] + item[4] + '\n' + item[5];
+                        txt1.tooltip({
+                            title: tooltext,
+                            placement: 'top',
+                            animation: false
+                        });
+                        $jsonpilots.append(txt1);
+                    });
+
+                    $.each(blue_pilots.sort(), function(i, item) {
+                        var txt1 = $("<li></li>").text(item[0] + ' ');
+                        if (item[1] == 1) {
+                            txt1.addClass("bluedot");
+                            txt1.append(radioicon);
+                        } else {
+                            txt1.addClass("bluedot")
+                        }
+                        ;if (item[4] == '\nIn: CA') {
+                            txt1.append('&nbsp;');
+                            txt1.append(eyeicon);
+                        }
+                        ;var tooltext = item[0] + '\nPing: ' + item[2] + item[4] + '\n' + item[5];
+                        txt1.tooltip({
+                            title: tooltext,
+                            placement: 'top',
+                            animation: false
+                        });
+                        $jsonpilots.append(txt1);
+                    });
+
+                    $.each(gray_pilots.sort(), function(i, item) {
+                        var txt1 = $("<li></li>").text(item[0] + ' ');
+
+                        if (item[1] == 1) {
+                            txt1.addClass("neutraldot");
+                            txt1.append(radioicon);
+                        } else {
+                            txt1.addClass("neutraldot")
+                        }
+                        ;if (item[4] == '\nIn: CA') {
+                            txt1.append('&nbsp;');
+                            txt1.append(eyeicon);
+                        }
+                        ;var tooltext = item[0] + '\nPing: ' + item[2] + item[4] + '\n' + item[5];
+                        txt1.tooltip({
+                            title: tooltext,
+                            placement: 'top',
+                            animation: false
+                        });
+                        $jsonpilots.append(txt1);
+
+                    });
+
+                    var totalpilots = blue_pilots.length + red_pilots.length + gray_pilots.length;
+                    if (totalpilots < 0) {
+                        totalpilots = 0
+                    }
+                    ;var pilotcountertext = '';
+
+                    if ($MASTER_LIVE_SERVER) {
+                        if (totalpilots == 0) {
+                            pilotcountertext = 'server online';
+                        } else if (totalpilots == 1) {
+                            pilotcountertext = 'one loner online';
+                        } else {
+                            pilotcountertext = totalpilots + ' pilots online <span style="color:#00aef0; font-size:1.5em">' + blue_pilots.length + '</span> vs <span style="color:#ff2d03; font-size:1.5em">' + red_pilots.length + '</span>';
+                        }
+                    } else {
+                        pilotcountertext = 'server offline';
+                    }
+
+                    $pilotsonlinecounter.html(pilotcountertext);
+
+                    if (totalpilots > 30 && $MASTER_LIVE_SERVER == true) {
+                        $pilotslogo.fadeOut("slow");
+                    } else {
+                        $pilotslogo.fadeIn("slow");
+                    }
+                });
+
+                ws.on('bfstatus emited', function(jmsg) {
+					document.getElementById("mystatus").innerHTML = "bfstatus emited";
+					
+
+                    BF_STATUS = jmsg
+                    processBFStatus(false)
+                });
+
+                ws.on('bfpilots emited', function(jmsg) {
+					document.getElementById("mystatus").innerHTML = "bfpilots emited";
+					
+
+                    $('#total-red').text(jmsg.red + " RED")
+                    $('#total-blue').text(jmsg.blue + " BLUE")
+                });
+
+                ws.on('alert emited', function(jmsg) {
+					document.getElementById("mystatus").innerHTML = "alert emited";
+					
+                    var obj = JSON.parse(jmsg);
+                    $alerttit.html('<a href="' + obj.url + '" target="_blank">' + obj.title + '</a>').html();
+                    $alertbody.text(obj.body);
+                });
+
+                ws.on('stats emited', function(jmsg) {
+					document.getElementById("mystatus").innerHTML = "stats emited";
+					
+                    var arr = JSON.parse(jmsg);
+                    //var textArr = new Array();
+
+                    //$.each(arr, function(i, obj) {
+                    //	textArr.push([obj[0]]);
+                    //});
+                    //console.log(textArr);
+                    $statit.text('');
+                    $.each(arr, function(i, obj) {
+                        console.log(obj[0]);
+                        var txt1 = $("<li></li>").text(obj[0].name + ' ');
+                        if (obj[0].side == 'blue') {
+                            txt1.addClass("bluedot");
+                        } else if (obj[0].side == 'red') {
+                            txt1.addClass("reddot");
+                        }
+                        var tooltext = 'Sorties: ' + (obj.length + 1)
+                        tooltext = tooltext + '\nKills: ' + obj[0].kills.length;
+                        txt1.tooltip({
+                            title: tooltext,
+                            placement: 'top',
+                            animation: false
+                        });
+                        $statit.append(txt1);
+                    });
+                });
+
+                
+				document.getElementById("mystatus").innerHTML = "setup correctly";
+
+            }
+            
+            
+            $(document).ready(loadandstuff);
+
+            function myFunction(pilotname) {
+                if (pilotname == null) {
+                    var pilotname = document.getElementById("list_players").value;
+                }
+                var ucid;
+                for (var key in allPilotArr) {
+                    if (pilotname == allPilotArr[key].name) {
+                        ucid = key;
+                    }
+                }
+                ;<!-- document.getElementById("demo").innerHTML = "Loading "+pilotname+" Pilot Statistics"; -->
+                console.log(ucid)
+                pilotsoverview(ucid)
+                pilotkills(ucid)
+                currentstreak(ucid)
+                beststreak(ucid)
+                flighttime(ucid)
+                pilotinfo(ucid)
+                <!-- document.getElementById("pinfo").click(); -->
+                <!-- location.href='/statistics/'+ucid; -->
+            }
+            ;
+            function checkpilotside(_ucid) {
+                for (var key in allPilotArr) {
+                    if (_ucid == key) {
+                        if (allPilotArr[key].side == 'blue') {
+                            return 'blue'
+                        } else if (allPilotArr[key].side == 'red') {
+                            return 'red'
+                        } else {
+                            return 'grey'
+                        }
+                        ;
+                    }
+                    ;
+                }
+                ;return ''
+            }
+            ;
+            function getallpilots() {
+                $.getJSON(pilotsurl, function(json) {
+                    $.each(json.pilotlist, function(i, v) {
+                        <!-- console.log(i) -->
+                        <!-- console.log(v) -->
+
+                        allPilotArr[v[0]] = {
+                            "name": v[1],
+                            "side": v[2]
+                        };
+                        <!-- console.log(allPilotArr[v[0]]) -->
+                        <!-- autocompletelist.push(v) -->
+                    });
+                });
+                console.log(allPilotArr)
+            }
+            ;
+            function test(ucid) {
+                console.log(ucid)
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + ucid, function(data) {
+                    console.log(data);
+                });
+            }
+            ;
+            function pilotsoverview(_ucid) {
+                if (_ucid == null) {
+                    $("#pilotsArr tr").remove();
+                    $.getJSON($SCRIPT_ROOT + '/statistics', function(data) {
+                        $.each(data.resultlist3, function(i, item) {
+
+                            var side = checkpilotside(item[0])
+                            var tabrow = $('<tr></tr>');
+                            <!-- tabrow.append('&nbsp;'); -->
+
+                            var namecell = $('<td style="padding-left: 20px;"></td>');
+                            if (side == 'blue') {
+                                namecell.addClass("bluedot");
+                            } else if (side == 'red') {
+                                namecell.addClass("reddot");
+                            }
+                            ;var sortiecell = $("<td></td>");
+                            var gkillcell = $("<td></td>");
+                            var akillcell = $("<td></td>");
+                            var tkillcell = $("<td></td>");
+                            var landcell = $("<td></td>");
+                            var deathcell = $("<td></td>");
+                            var aakdcell = $("<td></td>");
+                            var agkdcell = $("<td></td>");
+                            var kdcell = $("<td></td>");
+                            var skdcell = $("<td></td>");
+                            var slcell = $("<td></td>");
+
+                            tabrow.append(namecell.text(item[1]));
+                            tabrow.append(sortiecell.text(item[2]));
+                            tabrow.append(gkillcell.text(item[3]));
+                            tabrow.append(akillcell.text(item[4]));
+                            tabrow.append(tkillcell.text(item[5]));
+                            tabrow.append(landcell.text(item[6]));
+                            tabrow.append(deathcell.text(item[7]));
+                            tabrow.append(aakdcell.text(item[8]));
+                            tabrow.append(agkdcell.text(item[9]));
+                            tabrow.append(kdcell.text(item[10]));
+                            tabrow.append(skdcell.text(item[11]));
+                            tabrow.append(slcell.text(item[12]));
+
+                            // tabrow.append(freqcell.text(item[6]));
+                            $pilotsArr.append(tabrow);
+
+                        });
+                        /* endif !== '373vFS Server' */
+                    }).complete(function() {
+                        var pinfotable = $('#pilotsOverview').DataTable();
+                        $('#pilotsOverview tbody').on('click', 'tr', function() {
+                            var data = pinfotable.row(this).data();
+                            console.log(data[0])
+                            myFunction(data[0])
+                        });
+                    });
+                } else {
+                    $("#pilotArr tr").remove();
+                    $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid, function(data) {
+                        var tabrow = $("<tr></tr>");
+                        $.each(data.resultlist1[0], function(i, item) {
+                            var cell = $("<td></td>");
+                            tabrow.append(cell.text(item));
+                            console.log(item)
+                        });
+                        $pilotArr.append(tabrow);
+                        for (var key in allPilotArr) {
+                            if (_ucid == key) {
+                                if (allPilotArr[key].side == 'blue') {
+                                    pilotnameText = '<span style="color:#00aef0">' + allPilotArr[key].name + '</span>';
+                                    $pilotname.html(pilotnameText);
+                                } else {
+                                    pilotnameText = '<span style="color:#ff2d03">' + allPilotArr[key].name + '</span>';
+                                    $pilotname.html(pilotnameText);
+                                }
+                                ;
+                            }
+                            ;
+                        }
+                        ;
+                    });
+                }
+            }
+            ;
+            function pilotinfo(_ucid) {
+                if ($.fn.DataTable.isDataTable("#pilotInfo")) {
+                    $("#pilotInfo").DataTable().clear().destroy();
+                }
+
+                flightinfoArr = {};
+
+                $("#pilotInfoArr tr").remove();
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid + '/info', function(data) {
+                    $.each(data.resultlist2, function(i, item) {
+                        var tabrow = $("<tr></tr>");
+
+                        var flightfkcell = $("<td></td>");
+                        var takeoffcell = $("<td></td>");
+                        var endtimecell = $("<td></td>");
+                        var endeventcell = $("<td></td>");
+                        var sidecell = $("<td></td>");
+                        var killscell = $("<td></td>");
+                        var typecell = $("<td></td>");
+
+                        tabrow.append(flightfkcell.text(item[0]));
+                        tabrow.append(takeoffcell.text(item[1]));
+                        tabrow.append(endtimecell.text(item[2]));
+                        tabrow.append(endeventcell.text(item[3]));
+                        tabrow.append(sidecell.text(item[4]));
+                        tabrow.append(killscell.text(item[5]));
+                        tabrow.append(typecell.text(item[6]));
+
+                        flightinfoArr[i] = [];
+                        for (var idx in item) {
+                            flightinfoArr[i].push(item[idx]);
+                        }
+                        ;
+                        // tabrow.append(freqcell.text(item[6]));
+                        $pilotInfoArr.append(tabrow);
+                    });
+                    console.log(flightinfoArr)
+                }).complete(function() {
+                    infotable = $("#pilotInfo").dataTable();
+                    document.getElementById("pinfo").click();
+                });
+            }
+            ;
+            function pilotkills(_ucid) {
+                if ($.fn.DataTable.isDataTable("#pilotKills")) {
+                    $("#pilotKills").DataTable().clear().destroy();
+                }
+
+                $("#pilotKillsArr tr").remove();
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid + '/kills', function(data) {
+                    $.each(data.resultlist4, function(i, item) {
+                        var tabrow = $("<tr></tr>");
+
+                        var flightfkcell = $("<td></td>");
+                        var killtimecell = $("<td></td>");
+                        var killersidecell = $("<td></td>");
+                        var killerunitcell = $("<td></td>");
+                        var victimnamecell = $("<td></td>");
+                        var victimsidecell = $("<td></td>");
+                        var victimunitcell = $("<td></td>");
+                        var weaponcell = $("<td></td>");
+
+                        tabrow.append(flightfkcell.text(item[0]));
+                        tabrow.append(killtimecell.text(item[1]));
+                        tabrow.append(killersidecell.text(item[2]));
+                        tabrow.append(killerunitcell.text(item[3]));
+                        tabrow.append(victimnamecell.text(item[4]));
+                        tabrow.append(victimsidecell.text(item[5]));
+                        tabrow.append(victimunitcell.text(item[6]));
+                        tabrow.append(weaponcell.text(item[7]));
+
+                        // tabrow.append(freqcell.text(item[6]));
+                        $pilotKillsArr.append(tabrow);
+                    });
+                }).complete(function() {
+                    infotable = $("#pilotKills").dataTable();
+                });
+            }
+
+            function beststreak(_ucid) {
+                var result
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid + '/beststreak', function(data) {
+                    if (data.resultlist6.length == 0) {
+                        result = 0
+                    } else {
+                        console.log(data.resultlist6[0][0])
+                        result = data.resultlist6[0][0]
+                    }
+                    ;
+                }).complete(function() {
+                    <!-- console.log(result) -->
+                    for (var key in allPilotArr) {
+                        if (_ucid == key) {
+                            if (allPilotArr[key].side == 'blue') {
+                                bestStreakText = 'Best Streak: <span style="color:#00aef0">' + result + '</span>';
+                                $bestStreak.html(bestStreakText);
+                            } else {
+                                bestStreakText = 'Best Streak: <span style="color:#ff2d03">' + result + '</span>';
+                                $bestStreak.html(bestStreakText);
+                            }
+                            ;
+                        }
+                        ;
+                    }
+                    ;
+                    <!-- console.log(bestStreakText) -->
+
+                });
+            }
+            ;
+            function currentstreak(_ucid) {
+                var result
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid + '/currentstreak', function(data) {
+                    if (data.resultlist7.length == 0) {
+                        result = 0
+                    } else {
+                        console.log(data.resultlist7[0][0])
+                        result = data.resultlist7[0][0]
+                    }
+                    ;
+                }).complete(function() {
+                    <!-- console.log(result) -->
+                    for (var key in allPilotArr) {
+                        if (_ucid == key) {
+                            if (allPilotArr[key].side == 'blue') {
+                                currentStreakText = 'Current Streak: <span style="color:#00aef0">' + result + '</span>';
+                                $currentStreak.html(currentStreakText);
+                            } else {
+                                currentStreakText = 'Current Streak: <span style="color:#ff2d03">' + result + '</span>'
+                                $currentStreak.html(currentStreakText);
+                            }
+                            ;
+                        }
+                        ;
+                    }
+                    ;
+                    <!-- console.log(currentStreakText) -->
+
+                });
+            }
+            ;
+            function flighttime(_ucid) {
+                var result
+                $.getJSON($SCRIPT_ROOT + '/statistics/' + _ucid + '/flighttime', function(data) {
+                    if (data.resultlist8.length == 0) {
+                        result = 0
+                    } else {
+                        console.log(data.resultlist8[0][0])
+                        result = data.resultlist8[0][0]
+                    }
+                    ;
+                }).complete(function() {
+                    <!-- console.log(result) -->
+                    for (var key in allPilotArr) {
+                        if (_ucid == key) {
+                            if (allPilotArr[key].side == 'blue') {
+                                flighttimeText = 'Flight Time: <span style="color:#00aef0">' + result + '</span>';
+                                $flighttime.html(flighttimeText);
+                            } else {
+                                flighttimeText = 'Flight Time: <span style="color:#ff2d03">' + result + '</span>'
+                                $flighttime.html(flighttimeText);
+                            }
+                            ;
+                        }
+                        ;
+                    }
+                    ;<!-- console.log(flighttimeText) -->
+
+                });
+            }
+            ;</script>
+
+
+
+<style type="text/css" data-styled-components="" data-styled-components-is-local="true"></style>
+<style type="text/css">.gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="./operation_BLUE FLAG_files/infowindow.js.stažený soubor"></script><style data-emotion=""></style><script type="text/javascript" charset="UTF-8" src="./operation_BLUE FLAG_files/controls.js.stažený soubor"></script><script type="text/javascript" charset="UTF-8" src="./operation_BLUE FLAG_files/marker.js.stažený soubor"></script><script type="text/javascript" charset="UTF-8" src="./operation_BLUE FLAG_files/stats.js.stažený soubor"></script></head>
+
+
+<body style="width: 100%; min-width: 990px; text-align: center; overflow-y: scroll">
+	<div style="text-align: right; width: 100%; background: #404040; padding: 6px; color: #aaaaaa">
+		<span id="mystatus" style="display: none">none</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last update:&nbsp;
+		<span class="label label-default" style="font-size: 14px; width:auto;" id="updatetime">16:52:36 zulu 19/08/2018</span>
+		<span>while: </span>
+		<span style="font-size: 12px;" id="status" class="label label-primary">blissfully connected</span>
+	</div>
+	
+	<div style="width: 990px; padding: 5px; margin: 0 auto;">
+		
+		
+		
+		<div id="map" style="width: 800px; position: relative; margin: 0 auto">
+			
+			
+		</div>
+		
+		<br>
+		
+		<table style='margin: 0 auto;'>
+			<tr>
+				<td>
+							 <!-- PILOTS -->
+					<!------------------------------------------------------------------------------ -->
+					<!-- <div class="col-sm-3 sidenav"> -->
+					<div style="width:200px">
+						<h5><b><span id="sessiontimerlabel" style="color:grey">session elapsed time: </span></h5><h3><span id="sessiontimer" style="color:white">02:10:00</span></b></h3>
+						<div class="progress progress-striped active" id="sessiontimerbar_parent">
+							<div class="progress-bar" style="width: 72.2222%;" id="sessiontimerbar"></div>
+						</div>
+						<h6><span id="pilotsonlinecounter" style="color:grey">43 pilots online <span style="color:#00aef0; font-size:1.5em">25</span> vs <span style="color:#ff2d03; font-size:1.5em">16</span></span></h6>
+						
+						<hr>
+						<p>
+							<span style="color:gray">time to lives reset </span><span class="label label-default" id="livestimer">05:47:00</span>
+						</p>
+						<p>DCS Radio IP <span class="label label-danger">54.36.126.186:5014</span></p>
+						<p>Teamspeak pass <span class="label label-primary">RayGun</span></p>
+
+						<p>Registered: <span id="total-red" class="label label-danger">228 RED</span> <span id="total-blue" class="label label-primary">397 BLUE</span></p>
+
+						
+					</div>
+				</td>
+				 <!-- AIRBASES and Roadbases -->
+		<!------------------------------------------------------------------------------ -->
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				
+				<td>
+					<div style="width:250px">
+						<h5 class="text-left" style="color:white; font-weight: bold">Airfields</h5>
+						<ul class="no_bullet text-left bsspacing" id="jsonbases"><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Batumi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Beslan </li><li class="bluebase" style="color: orange;" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> </div> </div> Maykop <span class="glyphicon glyphicon-fire"> </span><span class="glyphicon glyphicon-wrench"> </span><span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Mineralnye Vody </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gele <span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kutaisi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Stennis </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Tbilisi </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Krymsk <span class="glyphicon glyphicon-plane"> </span></li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kobuleti </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kuznetsov </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Sukhumi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gudauta </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Nalchik </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Sochi </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Mozdok </li><li class="bluebase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Senaki </li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Krasnodar Center <span class="glyphicon glyphicon-plane"> </span></li><li class="redbase" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Anapa </li></ul>
+					</div>
+					
+				</td>
+
+
+				<td>
+					<!-- FARPS plus COMMS-->
+					<!------------------------------------------------------------------------------ -->
+					<div style="width:250px">
+
+						<div>
+							<h5 class="text-left" style="color:white; font-weight: bold">Farps &amp; Road Bases</h5>
+							<ul class="no_bullet text-left bsspacing" id="jsonfarps"><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Malot </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Ambrolauri </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Krasnaya </li><li class="bluefarp" style="color: gray;" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"> </div> </div> Arhipo <span class="glyphicon glyphicon-remove"> </span><span class="glyphicon glyphicon-wrench"> </span></li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kuizu </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Chikola </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kazbegi </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Uckulan </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Psebay </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Tuapse </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Arhyz </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Habaz </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Tianeti </li><li class="redfarp" style="color: orange;" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 91%;"> </div> </div> Saratovskays <span class="glyphicon glyphicon-fire"> </span><span class="glyphicon glyphicon-wrench"> </span></li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Sabuli </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Khashuri </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Java </li><li class="bluefarp" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Zemo-Azhara </li></ul>
+						</div>
+					</div>
+				</td>
+
+				
+				<td>
+				<!-- CITIES -->
+				<!------------------------------------------------------------------------------ -->
+
+					<div style="width:250px">
+
+						<div>
+							<h5 class="text-left" style="color:white; font-weight: bold">Cities &amp; Fuel Bases</h5>
+							<ul class="no_bullet text-left bsspacing" id="jsoncities"><li class="bluecity" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gubskaya </li><li class="bluecity" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Udarnyy </li><li class="bluecity" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Zestafoni </li></ul>
+							<h5 class="text-left" style="color:white; font-weight: bold">Comm Arrays &amp; Sam Sites</h5>
+							<ul class="no_bullet text-left bsspacing" id="jsoncomms"><li class="blueradar" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Tsvirmi </li><li class="blueradar" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Cherkessk </li><li class="blueradar" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Kapsi </li><li class="blueradar" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Gagra </li><li class="blueradar" data-original-title="" title=""> <div class="progress" style="width:30px;height:10px; display:inline-block;margin:0"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div> </div> Apsheronsk </li></ul>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<!-- INFO -->
+		<!------------------------------------------------------------------------------ -->
+		
+
+		<div style="margin: 0 auto">
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade active in" id="stuff">
+					<br>
+					<p><span class="glyphicon glyphicon-fire"> </span> Base is under attack |
+						<span class="glyphicon glyphicon-remove"> </span> closed |
+						<span class="glyphicon glyphicon-wrench"> </span> repairing |
+						<span class="glyphicon glyphicon-plane"> </span> has active interceptors.<br>
+						<span class="glyphicon glyphicon-headphones"> </span> Pilot is connected to DCS Radio.
+						<span class="glyphicon glyphicon-glyphicon glyphicon-eye-open"> </span> Pilot role is
+						GCI/AWACS.<br>
+						<span class="glyphicon glyphicon-info-sign"> </span> You can mouse over things to get
+						coordinates.<br>
+						<span class="glyphicon glyphicon-info-sign"> </span> If the server is not shown in the
+						2.5 server list, the IP is 54.36.126.186:10310.<br>
+						<span class="glyphicon glyphicon-exclamation-sign"> </span> This page will auto refresh,
+						no need to mash the F5 key to get up-to-date results.<br><span class="glyphicon glyphicon-fullscreen"> </span>&nbsp;Click the map to go fullscreen.
+						<br><span class="glyphicon glyphicon-backward"></span>&nbsp;Click the kneeboard to change pages.&nbsp;<span class="glyphicon glyphicon-forward"></span></p>
+						
+				</div>
+			</div>
+		</div>
+		<!------------------------------------------------------------------------------ -->
+	
+		<br>
+	
+		<iframe src="knee.html" style="width: 100%; height: 1500px; border: #000"></iframe>
+	
+	
+	
+	</div>
+
+
+
+<script type="text/javascript" charset="UTF-8">
+
+
+
+	function requestFullScreen(el) {
+
+	  //var el = document.body;
+
+	  // Supports most browsers and their versions.
+	  var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen 
+	  || el.mozRequestFullScreen || el.msRequestFullScreen;
+
+	  if (requestMethod) {
+
+		// Native full screen.
+		requestMethod.call(el);
+
+	  }
+	  else if (typeof window.ActiveXObject !== "undefined") {
+
+		// Older IE.
+		var wscript = new ActiveXObject("WScript.Shell");
+
+		if (wscript !== null) {
+		  wscript.SendKeys("{F11}");
+		}
+	  }
+	}
+
+
+
+
+
+    var pilotdataurl = 'http://' + document.domain + ':' + location.port + '/radiolistdata';
+    var fueldataurl = 'http://' + document.domain + ':' + location.port + '/fueldata';
+    var chartdataurl = 'http://' + document.domain + ':' + location.port + '/chartdata';
+    var statsurl = 'http://' + document.domain + ':' + location.port + '/get_stats';
+    var pilotsurl = 'http://' + document.domain + ':' + location.port + '/list_pilots';
+
+    var redicon = '<span style="color:#ff2d03" class="glyphicon glyphicon-user"> </span>';
+    var blueicon = '<span style="color:#00aef0" class="glyphicon glyphicon-user"> </span>';
+    var radioicon = '<span style="color:orange" class="glyphicon glyphicon-headphones"> </span>';
+    var eyeicon = '<span style="color:orange" class="glyphicon glyphicon glyphicon-eye-open"> </span>';
+
+    var $pilotdetailsR = $('#pilotdetailsR');
+    var $pilotdetailsL = $('#pilotdetailsL');
+    var $thetableL = $('#thetableL');
+    var $thetableR = $('#thetableR');
+    var $titledetailL = $('#titledetailL');
+    var $titledetailR = $('#titledetailR');
+    var $fuelmeters = $('#fuelmeters');
+    var $placeholder = $('#placeholder');
+    var $pilotArr = $('#pilotArr');
+    var $pilotInfoArr = $('#pilotInfoArr');
+    var $pilotKillsArr = $('#pilotKillsArr');
+    var $pilotsArr = $('#pilotsArr');
+    var $currentStreak = $('#currentStreak');
+    var $flighttime = $('#flighttime');
+    var $pilotname = $('#pilotname');
+    var $bestStreak = $('#bestStreak');
+    var allPilotArr = new Array();
+    var flightinfoArr = [];
+    var autocompletelist = new Array();
+
+    var pilotchartoptions = {
+        yaxis: {
+            min: 0
+        },
+        series: {
+            lines: {
+                show: true,
+                fill: false,
+                fillColor: {colors: [{opacity: 0.7}, {opacity: 0.1}]}
+            },
+            points: {
+                show: false,
+                radius: 3
+            }
+        },
+        colors: ["#ff2d03", "#00aef0"],
+    };
+
+    var $status = $('#status');
+    var $updatetime = $('#updatetime');
+    var $jsonpilots = $('#jsonpilots');
+    var $pilotslogo = $('#pilotslogo');
+    var $pilotsonlinecounter = $('#pilotsonlinecounter');
+    var $alerttit = $('#alerttit');
+    var $alertbody = $('#alertbody');
+    var $sessiontimer = $('#sessiontimer');
+    var $livestimer = $('#livestimer');
+    var $sessiontimerlabel = $('#sessiontimerlabel');
+    var $sessiontimerbar = $('#sessiontimerbar');
+    var $sessiontimerbar_parent = $('#sessiontimerbar_parent');
+    var $servericon = $('#servericon');
+    var $messageinputform = $('#messageinputform');
+    var $messageinputbutton = $('#messageinputbutton');
+
+
+    var toHHMMSS = function (num) {
+        var sec_num = parseInt(num, 10); // don't forget the second param
+        var hours = Math.floor(sec_num / 3600);
+        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+        var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        return hours + ':' + minutes + ':' + seconds;
+    }
+
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    pilotsoverview();
+    getallpilots();
+    <!-- addRowHandlers(); -->
+    <!-- var infotable; -->
+    <!-- infotable = $('#pilotInfo').DataTable(); -->
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        evt.currentTarget.className += " active";
+        document.getElementById(cityName).style.display = "block";
+        document.querySelector('main').style.display = "block";
+        document.querySelector('#loading').style.display = "none";
+    };
+    $('body .dropdown-toggle').dropdown();
+
+</script>
+
+</body>
+
+</html>
+

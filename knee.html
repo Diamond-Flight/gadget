@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<meta 
+			 name='viewport' 
+			 content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' 
+		/>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script src="static/kneeboard.js"></script>
+		
+		<script>
+			function requestFullScreen(el) {
+
+			  //var el = document.body;
+
+			  // Supports most browsers and their versions.
+			  var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen 
+			  || el.mozRequestFullScreen || el.msRequestFullScreen;
+
+			  if (requestMethod) {
+
+				// Native full screen.
+				requestMethod.call(el);
+
+			  }
+			  else if (typeof window.ActiveXObject !== "undefined") {
+
+				// Older IE.
+				var wscript = new ActiveXObject("WScript.Shell");
+
+				if (wscript !== null) {
+				  wscript.SendKeys("{F11}");
+				}
+			  }
+			}
+			
+			
+			var pointer = 0;
+			
+			function setImage() {
+				document.body.setAttribute("style", "background-image: url('static/kneeboard/" + kneeboard[pointer] + "')");
+			}
+			
+			function nextPage() {
+				++pointer;
+				if (pointer >= kneeboard.length - 1) {
+					pointer = 0;
+				}
+				
+				setImage();
+			}
+			
+			function prevPage() {
+				--pointer;
+				if (pointer < 0) {
+					pointer = kneeboard.length - 2;
+				}
+				
+				setImage();
+			}
+		</script>
+		
+		<style>
+			body {
+				background: #000;
+				padding: 0;
+				margin: 0;
+				
+				background-image: url("static/kneeboard/00_07_General_Map.png");
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+			}
+			#kneeboard {
+				height: 100vh;
+				text-align: center;
+				padding: 0;
+			}
+			#page {
+				height: 100vh;
+				display: block;
+				margin: 0 auto;
+				float: left;
+			}
+			button {
+				background: transparent;
+				border: none !important;
+				font-size:0;
+				
+				margin: 0 auto;
+				height: 100%;
+				width: 50%;
+				float: left;
+				outline: none;
+			}
+			button:focus {
+				outline: none;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="kneeboard">
+			<button onclick="prevPage(); $(':focus').blur()">&lt;</button>
+			<!--img id="page" src='static/kneeboard/00_07_General_Map.png'-->
+			<button onclick="nextPage(); $(':focus').blur()">&gt;</button>
+		</div>
+	</body>
+</html>
