@@ -19462,8 +19462,8 @@
 				document.getElementById("mystatus").innerHTML = "func";
 
 
-				var loc = document.location + '';
-				if (loc.split("?")[1] == "knee") {
+				var loc = (document.location + '').split("?");
+				if (loc[loc.length - 1] == "knee") {
 					$('#kneeboard').css("display", "block");
 				}
 
