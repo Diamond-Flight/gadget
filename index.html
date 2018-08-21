@@ -348,11 +348,23 @@
 							text += "Coalition: " + val.coalition + "\n";
 							text += "Dead count: " + val.deadCount + "\n";
 							if (val.deadCount > 0) {
-								text += "---Dead units:---\n";
+								text += "-----------------Dead units:-----------------\n";
+								
+								var index = 0;
 								Object.keys(val.deadUnits).forEach(function (unitName) {
-									text += val.deadUnits[unitName].type + "\n";
+									text += val.deadUnits[unitName].type + "    ";
+									if (Math.floor(index/6) != 0) {
+										text += "\n";
+										index = 0;
+									}
+									else {
+										++index;
+									}
 								});
-								text += "---------------------\n";
+								if (index != 0) {
+									text += "\n";
+								}
+								text += "-------------------------------------------------\n";
 							}
 							text += "Defenders spawned: " + val.defendersSpawned + "\n";
 							text += "Disabled: " + val.disabled + "\n";
