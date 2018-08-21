@@ -171,6 +171,31 @@
 				color: #ffffff;
 				text-shadow: 1px 1px #000000;
 			}
+			
+			li.bluedot {
+				background: url("static/img/bluedot.png") no-repeat left;
+				padding-left: 20px;
+			}
+			
+			td.bluedot {
+				background: url("static/img/bluedot.png") no-repeat left;
+				padding-left: 20px;
+			}
+			
+			li.reddot {
+				background: url("static/img/reddot.png") no-repeat left;
+				padding-left: 20px;
+			}
+			
+			td.reddot {
+				background: url("static/img/reddot.png") no-repeat left;
+				padding-left: 20px;
+			}
+			
+			li.neutraldot {
+				background: none;
+				padding-left: 20px;
+			}
 		</style>
 		
 		
@@ -1194,7 +1219,9 @@
 								<div class="progress-bar" style="width: 72.2222%;" id="sessiontimerbar"></div>
 							</div>
 							<h6><span id="pilotsonlinecounter" style="color:grey">&nbsp;</span></h6>
-							
+							<div style="width:300px; margin:0 auto;">
+								<ul class="no_bullet text-left bsspacing bspilots" id="jsonpilots"></ul>
+							</div>
 							<hr>
 							<p>
 								<span style="color:gray">time to lives reset </span><span class="label label-default" id="livestimer">00:00:00</span>
