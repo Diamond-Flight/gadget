@@ -98,6 +98,69 @@
 			* {
 				border-radius: 0 !important;
 			}
+			
+			/*Dynamicali added elements*/
+			.mapMarker {
+				position: absolute;
+				padding: 0;
+				width: 39px;
+			}
+			.mapMarker img {
+				display: block;
+				margin: -10px;
+				padding: 10px;
+				float: left;
+			}
+			.mapMarkerIcons {
+				font-size: 8px;
+				color: #ffffff;
+				text-align: center;
+				width: 100%;
+				float: left
+			}
+			
+			.progressBig {
+				position: relative;
+				width: 30px;
+				height: 10px;
+				display: inline-block;
+				margin: 0;
+				background: #404040;
+			}
+			
+			.progressBigText {
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 9px;
+				padding: 1px;
+				text-align: center;
+			}
+			
+			.progressSmall {
+				position: relative;
+				width: 20px;
+				height: 7px;
+				display: inline-block;
+				margin-left: 3px;
+				margin-top: 4.5px;
+				margin-right: 0px;
+				margin-bottom: 0px;
+				background: #404040;
+				float: left;
+			}
+			
+			.progressSmallText {
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 8px;
+				padding-top: 3px;
+				padding-left: 15px;
+				text-align: center;
+			}
 		</style>
 		
 		
@@ -151,13 +214,13 @@
 				//coalition = 0;		//test cases
 				switch (coalition) {
 					case 1:
-						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #ff2e00'> </div> <div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div></div> ";
+						return " <div class='progress progressBig'><div class='progress-bar' style='width: " + amount + "%; background: #ff2e00'> </div> <div class='progressBigText' style='color: #ffffff;'>" + amount + "</div></div> ";
 						break;
 					case 2:
-						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #00b8ff'> </div> <div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div></div> ";
+						return " <div class='progress progressBig'><div class='progress-bar' style='width: " + amount + "%; background: #00b8ff'> </div> <div class='progressBigText' style='color: #ffffff;'>" + amount + "</div></div> ";
 						break;
 					default:
-						return " <div class='progress' style='position: relative; width:30px;height:10px; display:inline-block;margin:0; background: #404040'><div class='progress-bar' style='width: " + amount + "%; background: #cccccc'> </div> <div style='color: #000; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 9px; padding: 1px; text-align: center; width: 100%'>" + amount + "</div></div> ";
+						return " <div class='progress progressBig'><div class='progress-bar' style='width: " + amount + "%; background: #cccccc'> </div> <div class='progressBigText' style='color: #000000;'>" + amount + "</div></div> ";
 						break;
 				}
 			}
@@ -165,13 +228,13 @@
 			function generateProgressBarSmall(amount, coalition) {
 				switch (coalition) {
 					case 1:
-						return "<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + amount + "%; background: #ff2e00'></div></div><div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + amount + "</div>";
+						return "<div class='progress progressSmall'><div class='progress-bar' style='width: " + amount + "%; background: #ff2e00'></div></div><div class='progressSmallText' style='color: #ffffff;'>" + amount + "</div>";
 						break;
 					case 2:
-						return "<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + amount + "%; background: #00b8ff'></div></div><div style='color: #ffffff; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + amount + "</div>";
+						return "<div class='progress progressSmall'><div class='progress-bar' style='width: " + amount + "%; background: #00b8ff'></div></div><div class='progressSmallText' style='color: #ffffff;'>" + amount + "</div>";
 						break;
 					default:
-						return "<div class='progress' style='position: relative; width:20px; height:7px; display:inline-block; margin-left: 3px; margin-top: 4.5px; margin-right: 0px; margin-bottom: 0px; background: #404040; float: left'><div class='progress-bar' style='width: " + amount + "%; background: #cccccc'></div></div><div style='color: #000; text-shadow: #000000; position: absolute; top: 0; left: 0; font-size: 8px; padding-top: 3px; padding-left: 15px; text-align: center; width: 100%'>" + amount + "</div>";
+						return "<div class='progress progressSmall'><div class='progress-bar' style='width: " + amount + "%; background: #cccccc'></div></div><div class='progressSmallText' style='color: #000000;'>" + amount + "</div>";
 						break;
 				}
 			}
@@ -295,8 +358,8 @@
 						
 						var pos = projectToMap(val.locationDetails.lat, val.locationDetails.lon);
 						
-						var mapMarker = $("<div style='position: absolute; left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px; padding: 0; width: 39px'></div>");
-						var mapIcon = $("<img style='display: block; margin: -10px; padding: 10px; float: left'>");
+						var mapMarker = $("<div class='mapMarker' style='left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px;'></div>");
+						var mapIcon = $("<img>");
 						
 						mapMarker.append(mapIcon);
 						statusInfo.append(generateProgressBarBig(val.health, val.coalition));
@@ -304,7 +367,7 @@
 						
 						mapMarker.append(generateProgressBarSmall(val.health, val.coalition));
 						
-						mapMarkerP = $("<div style='font-size: 8px; color: #ffffff; text-align: center; width: 100%; float: left'></div>");
+						var mapMarkerIcons = $("<div class='mapMarkerIcons'></div>");
 						
 						
 						
@@ -391,6 +454,7 @@
 							statusInfo.css({color: 'gray'});
 							if (val.closed) {
 								statusInfo.append(closedicon);
+								mapMarkerIcons.append(closedicon);
 							}
 						}
 						
@@ -405,20 +469,20 @@
 							mapIcon.css("background-image", "url('static/img/circle.png')");
 							
 							statusInfo.css({color: 'orange'});
-							mapMarkerP.css({color: 'orange'});
+							mapMarkerIcons.css({color: 'orange'});
 							
 							statusInfo.append(fireicon);
-							mapMarkerP.append(fireicon);
+							mapMarkerIcons.append(fireicon);
 						}
 						
 						if (val.repairing) {
 							statusInfo.append(repairicon);
-							mapMarkerP.append(repairicon);
+							mapMarkerIcons.append(repairicon);
 						}
 						
 						if (val.ewrDetected) {
 							statusInfo.append(planeicon);
-							mapMarkerP.append(planeicon);
+							mapMarkerIcons.append(planeicon);
 						}
 						
 						
@@ -435,7 +499,7 @@
 							animation: false
 						});
 						
-						mapMarker.append(mapMarkerP);
+						mapMarker.append(mapMarkerIcons);
 						
 						//place the inflated views
 						current.append(statusInfo);
