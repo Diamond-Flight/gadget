@@ -414,7 +414,7 @@
 						
 						mapMarker.append(generateProgressBarSmall(val.health, val.coalition));
 						
-						var mapMarkerIcons = $("<div class='mapMarkerIcons'></div>");
+						var mapMarkerIcons = $("<div class='mapMarkerIcons'>&nbsp;</div>");
 						
 						
 						
@@ -546,6 +546,7 @@
 							animation: false
 						});
 						
+						mapMarkerIcons.append("&nbsp;");
 						mapMarker.append(mapMarkerIcons);
 						
 						//place the inflated views
