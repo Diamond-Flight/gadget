@@ -122,8 +122,9 @@
 			
 			.progressBig {
 				width: 30px;
-				height: 10px;
+				height: 11px;
 				position: relative;
+				top: 2px;
 				display: inline-block;
 				margin: 0;
 				
@@ -133,13 +134,13 @@
 			.progressBigText {
 				width: 30px;
 				position: absolute;
-				top: -1px;
+				top: 0px;
 				left: 0;
 				margin: 0;
 				
 				text-align: center;
 				
-				font-size: 12px;
+				font-size: 11px;
 				color: #ffffff;
 				text-shadow: 1px 1px #000000;
 			}
@@ -368,7 +369,7 @@
 						
 						var pos = projectToMap(val.locationDetails.lat, val.locationDetails.lon);
 						
-						var mapMarker = $("<div class='mapMarker' style='left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px;'></div>");
+						var mapMarker = $("<div class='mapMarker' style='left: " + (pos[0] - 8) + "px; top: " + (-pos[1] - 7) + "px;'></div>");		//8 and 7 being the half of the base icon, so the icon is centeret exactly on desired position
 						var mapIcon = $("<img>");
 						
 						mapMarker.append(mapIcon);
