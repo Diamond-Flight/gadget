@@ -221,7 +221,7 @@
 			ga('create', 'UA-76502811-2', 'auto');
 			ga('send', 'pageview');
 			
-			var dev = false;
+			var dev_mode = false;
 			
 			/**
 			 * Converts decimal degrees to degrees minutes seconds.
@@ -366,7 +366,7 @@
 						text += convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\n";
 						text += "Health: " + val.health + "%" + "\n";
 						
-						if (dev) {
+						if (dev_mode) {
 							text += "\nCapturable: " + val.capturable + "\n";
 							text += "Closed: " + val.closed + "\n";
 							text += "Coalition: " + val.coalition + "\n";
@@ -1180,7 +1180,8 @@
 				}
 			}
 			
-			function reload() {
+			function dev() {
+				dev_mode = !dev_mode;
 				processBFStatus(false);
 			}
 		</script>
