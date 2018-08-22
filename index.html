@@ -221,7 +221,7 @@
 			ga('create', 'UA-76502811-2', 'auto');
 			ga('send', 'pageview');
 			
-			var dev_mode = false;
+			var dev = false;
 			
 			/**
 			 * Converts decimal degrees to degrees minutes seconds.
@@ -366,7 +366,7 @@
 						text += convertToDms(val.locationDetails.lat) + ", " + convertToDms(val.locationDetails.lon, true) + "\nDD: " + (val.locationDetails.lat.toFixed(4)) + ", " + (val.locationDetails.lon.toFixed(4)) + "\n" + val.locationDetails.mgrs + "\n";
 						text += "Health: " + val.health + "%" + "\n";
 						
-						if (dev_mode) {
+						if (dev) {
 							text += "\nCapturable: " + val.capturable + "\n";
 							text += "Closed: " + val.closed + "\n";
 							text += "Coalition: " + val.coalition + "\n";
@@ -641,16 +641,6 @@
 			
 			
 			var loadandstuff = function (){
-				//Check if we want to display the kneeboard
-				var param = (document.location + '').split("?");
-				param = param[param.length - 1];
-				if (param == "knee") {
-					$('#kneeboard').css("display", "block");
-				}
-				else if (param == "dev") {
-					dev_mode = true;
-				}
-				
 				//process BF_status for the first time
 				processBFStatus(true);
 				
@@ -1173,6 +1163,26 @@
 					}
 				});
 			}
+			
+			function requestFullScreen(el) {
+				// Supports most browsers and their versions.
+				var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
+				if (requestMethod) {
+					// Native full screen.
+					requestMethod.call(el);
+				}
+				else if (typeof window.ActiveXObject !== "undefined") {
+					// Older IE.
+					var wscript = new ActiveXObject("WScript.Shell");
+					if (wscript !== null) {
+						wscript.SendKeys("{F11}");
+					}
+				}
+			}
+			
+			function reload() {
+				processBFStatus(false);
+			}
 		</script>
 		
 		
@@ -1303,22 +1313,6 @@
 		
 		<!--SECONDARY SCRIPT, not sure why-->
 		<script type="text/javascript" charset="UTF-8">
-			function requestFullScreen(el) {
-				// Supports most browsers and their versions.
-				var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
-				if (requestMethod) {
-					// Native full screen.
-					requestMethod.call(el);
-				}
-				else if (typeof window.ActiveXObject !== "undefined") {
-					// Older IE.
-					var wscript = new ActiveXObject("WScript.Shell");
-					if (wscript !== null) {
-						wscript.SendKeys("{F11}");
-					}
-				}
-			}
-			
 			var pilotdataurl = 'http://' + document.domain + ':' + location.port + '/radiolistdata';
 			var fueldataurl = 'http://' + document.domain + ':' + location.port + '/fueldata';
 			var chartdataurl = 'http://' + document.domain + ':' + location.port + '/chartdata';
