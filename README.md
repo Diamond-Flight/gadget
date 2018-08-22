@@ -3,6 +3,8 @@ Custom DCS Blue Flag gadget, made more light-weight, to run better on phones.
 It's the official gadget, modified to reduce work-load and include some new functionality.
 
 Live demo: http://htmlpreview.github.io/?https://github.com/diamond-flight/gadget/blob/master/index.html
+or: https://diamond-flight.github.io/gadget/
+however loading unsafe scripts must be allowed, for the second one to work.
 
 To run the gadget, open *index.html* in your browser.
 
