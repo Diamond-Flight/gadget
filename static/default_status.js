@@ -9488,7 +9488,7 @@ BF_STATUS = {
 									"unitName": "Pilot #511"
 							}
 					},
-					"closed": true,
+					"closed": false,
 					"coalition": 0,
 					"deadCount": 0,
 					"deadUnits": [],
