@@ -6,10 +6,8 @@ Live demo: http://htmlpreview.github.io/?https://github.com/diamond-flight/gadge
 
 To run the gadget, open *index.html* in your browser.
 
- 
+ 
 
-The gadget includes customizable kneeboard accessible via *index.html?knee*.
+The gadget includes customizable kneeboard accessible via *knee.html*.
 
 To add pages to the kneeboard, place them (images) in */static/kneeboard/* and use */static/generate_kneeboard.bat* to generate */static/kneeboard.js* or manually add your pages to */static/kneeboard.js*.
-
-You can also view only the kneeboard via *knee.html*.
