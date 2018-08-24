@@ -203,7 +203,7 @@
 		<script src="static/default_status.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			$SCRIPT_ROOT = "";
-			
+
 			(function(i, s, o, g, r, a, m) {
 					i['GoogleAnalyticsObject'] = r;
 					i[r] = i[r] || function() {
@@ -222,6 +222,7 @@
 			ga('send', 'pageview');
 			
 			var dev_mode = false;
+			var slots = [];
 			
 			/**
 			 * Converts decimal degrees to degrees minutes seconds.
@@ -357,9 +358,16 @@
 				for (var key in BF_STATUS.baseStatus) {
 					if (BF_STATUS.baseStatus.hasOwnProperty(key)) {
 						var val = BF_STATUS.baseStatus[key];
-						
-						
-						
+
+						for (var slotKey in val.clientSlotsByUnitId){
+						    slot = val.clientSlotsByUnitId[slotKey];
+						    slots[slotKey] = {
+						        'type': slot.type,
+								'groupName': slot.groupName,
+								'baseName': key,
+							}
+						}
+
 						var text = '';
 						text += val.name + " - PAK " + val.pak + "\n";
 						text += val.baseType + "\n";
@@ -714,10 +722,10 @@
 					
 					$.each(arr, function(i, obj) {
 						if (obj.side == 1) {
-							red_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
+							red_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring, obj.slot]);
 						}
 						else if (obj.side == 2) {
-							blue_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
+							blue_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring, obj.slot]);
 						}
 						else if (obj.side === 0) {
 							gray_pilots.push([obj.name, obj.radio, obj.ping, obj.nextreset, obj.radiounittype, obj.frequencystring]);
@@ -735,6 +743,13 @@
 						else {
 							txt1.addClass("reddot");
 						}
+
+						if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
+                            if(typeof slots[item[6]] !== 'undefined'){
+                                txt1.append(" <span style='font-size: 11px'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+							}
+						}
+
 						
 						if (item[4] == '\nIn: CA') {
 							txt1.append('&nbsp;');
@@ -767,6 +782,12 @@
 							txt1.append('&nbsp;');
 							txt1.append(eyeicon);
 						}
+						
+                        if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
+                            if(typeof slots[item[6]] !== 'undefined'){
+                                txt1.append(" <span style='font-size: 11px'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+                            }
+                        }
 						
 						var tooltext = item[0] + '\nPing: ' + item[2] + item[4] + '\n' + item[5];
 						txt1.tooltip({
@@ -1277,7 +1298,7 @@
 					</td>
 					<td style="width: 100px"></td>
 					<td>
-						<div style="width:300px; margin:0 auto;">
+						<div style="width:400px; margin:0 auto;">
 							<ul class="no_bullet text-left bsspacing bspilots" id="jsonpilots"></ul>
 						</div>
 					</td>
