@@ -774,7 +774,8 @@
 
 						if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
                             if(typeof slots[item[6]] !== 'undefined'){
-                                txt1.append(" <span style='font-size: 11px; color: #808080'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+								var airbase = (slots[item[6]].baseName).toLowerCase();
+                                txt1.append(" <span style='font-size: 11px; color: #808080'>&nbsp;&nbsp;&nbsp;&nbsp;" + slots[item[6]].type + "&nbsp;&nbsp;&nbsp;&nbsp;" + airbase.charAt(0).toUpperCase() + airbase.substr(1) + "</span>");
 							}
 						}
 
@@ -813,7 +814,8 @@
 						
                         if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
                             if(typeof slots[item[6]] !== 'undefined'){
-                                txt1.append(" <span style='font-size: 11px; color: gray'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+								var airbase = (slots[item[6]].baseName).toLowerCase();
+                                txt1.append(" <span style='font-size: 11px; color: #808080'>&nbsp;&nbsp;&nbsp;&nbsp;" + slots[item[6]].type + "&nbsp;&nbsp;&nbsp;&nbsp;" + airbase.charAt(0).toUpperCase() + airbase.substr(1) + "</span>");
                             }
                         }
 						
