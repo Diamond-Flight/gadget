@@ -376,13 +376,17 @@
 						
 						if (dev_mode) {
 							text += "\nCapturable: " + val.capturable + "\n";
-							text += "Closed: " + val.closed + "\n";
-							text += "Coalition: " + val.coalition + "\n";
-							text += "Dead count: " + val.deadCount + "\n";
+							//text += "Closed: " + val.closed + "\n";
+							//text += "Coalition: " + val.coalition + "\n";
+							//text += "Dead count: " + val.deadCount + "\n";
+							
+							text += "Defenders spawned: " + val.defendersSpawned + "\n";
+							//text += "Unit count: " + val.unitCount + "\n";
+							text += "Alive units: " + (val.unitCount - val.deadCount) + "\n";
 							if (val.deadCount > 0) {
 								text += "-----------------Dead units:-----------------\n";
 								
-								var index = 1;
+								/*var index = 1;
 								Object.keys(val.deadUnits).forEach(function (unitName) {
 									text += val.deadUnits[unitName].type + "    ";
 									if (Math.floor(index/8) != 0) {
@@ -395,15 +399,39 @@
 								});
 								if (index != 1) {
 									text += "\n";
+								}*/
+								
+								var units = [];
+								
+								Object.keys(val.deadUnits).forEach(function (unitName) {
+									//text += val.deadUnits[unitName].type + "    ";
+									if (units[val.deadUnits[unitName].type] == null) {
+										units[val.deadUnits[unitName].type] = 0;
+									}
+									++(units[val.deadUnits[unitName].type]);
+								});
+								
+								var index = 1;
+								Object.keys(units).forEach(function (unitName) {
+									text += units[unitName] + "x " + unitName + "    ";
+									if (Math.floor(index/5) != 0) {
+										text += "\n";
+										index = 1;
+									}
+									else {
+										++index;
+									}
+								});
+								if (index != 1) {
+									text += "\n";
 								}
+								
 								text += "-------------------------------------------------\n";
 							}
-							text += "Defenders spawned: " + val.defendersSpawned + "\n";
-							text += "Disabled: " + val.disabled + "\n";
 							text += "Fuel: " + val.fuel + "kg" + "\n";
+							text += "Disabled: " + val.disabled + "\n";
 							text += "Fuel group alive: " + val.fuelGroupAlive + "\n";
-							text += "Has fuel group: " + val.hasFuelGroup + "\n";
-							text += "Unit count: " + val.unitCount;
+							text += "Has fuel group: " + val.hasFuelGroup;
 						}
 						
 						
@@ -746,7 +774,7 @@
 
 						if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
                             if(typeof slots[item[6]] !== 'undefined'){
-                                txt1.append(" <span style='font-size: 11px'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+                                txt1.append(" <span style='font-size: 11px; color: #808080'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
 							}
 						}
 
@@ -785,7 +813,7 @@
 						
                         if(dev_mode && typeof slots !== 'undefined' && slots.length > 0){
                             if(typeof slots[item[6]] !== 'undefined'){
-                                txt1.append(" <span style='font-size: 11px'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
+                                txt1.append(" <span style='font-size: 11px; color: gray'>" + slots[item[6]].type + "@" + slots[item[6]].baseName + "</span>");
                             }
                         }
 						
