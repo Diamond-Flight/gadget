@@ -685,7 +685,7 @@
 				
 				
 				//crete data connection
-				var ws = io.connect('http://gadget.buddyspike.net:80');		//io.connect('http://' + document.domain + ':' + location.port);
+				var ws = io.connect('http://gadget.buddyspike.net:8088');		//io.connect('http://' + document.domain + ':' + location.port);
 				
 				ws.on('connect', function() {
 					ws.emit('connect event', JSON.stringify({
